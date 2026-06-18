@@ -7,14 +7,16 @@ type RevealProps = {
   readonly children: ReactNode;
   readonly className?: string;
   readonly delay?: number;
+  readonly id?: string;
 };
 
-export function Reveal({ children, className, delay = 0 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, id }: RevealProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.div
       className={className}
+      id={id}
       initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
       whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px 24% 0px" }}

@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type AnchorHTMLAttributes, forwardRef } from "react";
@@ -14,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { logoUrl, navItems } from "@/content/routes";
+import { navItems } from "@/content/routes";
 import type { NavItem } from "@/content/types";
 import { cn } from "@/lib/utils";
 
@@ -126,15 +125,9 @@ export function MobileNav() {
         >
           <SheetHeader className="h-12 justify-center border-b border-[rgb(55_53_47/0.09)] px-4 py-0">
             <SheetTitle>
-              <Image
-                alt="teammint"
-                className="object-contain"
-                height={22}
-                src={logoUrl}
-                style={{ height: "22px", width: "134px" }}
-                unoptimized
-                width={134}
-              />
+              <span className="tm-oopy-nav-font text-[20px] font-extrabold tracking-normal">
+                SLIT
+              </span>
             </SheetTitle>
             <SheetClose asChild>
               <Button

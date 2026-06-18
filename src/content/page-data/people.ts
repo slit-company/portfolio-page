@@ -1,78 +1,226 @@
 import { routePaths } from "@/content/routes";
 import type { PageContent } from "@/content/types";
 
+const projectImage = (seed: string) =>
+  `https://picsum.photos/seed/${seed}/900/506`;
+
 export const interviewsPage = {
   key: "interviews",
   path: routePaths.interviews,
-  title: "구성원 인터뷰",
-  breadcrumb: "팀민트 채용페이지 / 구성원 인터뷰",
+  title: "프로젝트 포트폴리오",
+  breadcrumb: "SLIT Portfolio / 프로젝트 포트폴리오",
   intro: [
-    "팀민트가 타협하지 않는 것이 있습니다.",
-    "하루 8시간, 일주일 중 5일을 같이 보내는 동료들과의 관계입니다. 서로의 성장과 발전을 도모하며, 단순 업무 협력 이상의 의미를 만들어갑니다. 본 인터뷰 콘텐츠는 그 속에서 특별한 이야기와 열정을 가진 Refresh People을 소개하고 있습니다. 팀민트의 현재이자 미래인 그들의 이야기에 귀 기울여보세요.",
+    "채용 페이지이자 고객에게 보여줄 수 있는 회사 포트폴리오입니다.",
+    "각 프로젝트는 첫 화면에서는 짧게 보이고, 자세히 보기에서 문제, 사용 기술, SLIT이 만든 것, 시행착오, 결과와 증빙을 확인할 수 있게 구성했습니다.",
   ],
   interviewCards: [
     {
-      title: "🇻🇳 [호치민 오피스 법인장 조규헌님] 녹슬지 않으려면 움직여야죠",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fece56f56-5814-4c00-871a-3ef81e00d01b%2F%25EA%25B5%25AC%25EC%2584%25B1%25EC%259B%2590_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EC%25A1%25B0%25EA%25B7%259C%25ED%2597%258C.jpg&blockId=2d2db7f5-8f0a-818c-ae18-fa97202268c7",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "Recova",
+      image: projectImage("slit-recova-case"),
+      description:
+        "무담보 매입채권추심사가 수만 건의 채권 계정을 검토하고 회수 가능성과 법적 조치 우선순위를 판단하도록 돕는 AI Agent.",
+      tags: ["AI Agent", "B2B SaaS", "Domain Workflow"],
+      proof: "4개 기업 PoC, 수상과 프로그램 선정 스토리의 중심 제품",
+      details: [
+        {
+          title: "문제",
+          body: "채권 계정 검토와 회수 판단은 데이터만 보는 일이 아니라, 도메인 지식과 우선순위 판단이 함께 필요한 업무입니다.",
+        },
+        {
+          title: "접근",
+          body: "계정 검토, 회수 가능성 판단, 법적 조치 우선순위를 하나의 업무흐름으로 묶고 AI Agent가 판단 보조를 하도록 설계합니다.",
+        },
+        {
+          title: "결과",
+          body: "SLIT의 메인 사업이자 가장 깊은 도메인 포트폴리오입니다. 디자이너가 합류하면 제품 소개 페이지, 세일즈 덱, PoC 리포트, 고객용 화면 설명까지 확장할 수 있습니다.",
+        },
+      ],
     },
     {
-      title: "🐣 [퍼포먼스 마케터 신유나님] 팀민트 1호 인턴, 뿅아리의 성장기",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa19d011b-0748-4d00-95d1-bd312c8de398%2Fea6aed01-03de-4523-b112-bb796c42bf51%2F%25EA%25B5%25AC%25EC%2584%25B1%25EC%259B%2590_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EC%258B%25A0%25EC%259C%25A0%25EB%2582%2598%25EB%258B%25982.jpg&blockId=2d2db7f5-8f0a-811d-a369-e5579f3d850f",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "d8d / lilmgenius 협업",
+      image: projectImage("slit-d8d-case"),
+      description:
+        "30+ SI/AX 프로젝트 경험을 가진 AI 실행자와 함께 AX 프로젝트를 전개하는 협업 네트워크 케이스.",
+      tags: ["AX Partner", "Collaboration", "Execution Network"],
+      proof: "d8d 창업자 겸 CAIO, LF AI 수석, AI 강의·심사 이력 공개",
+      href: "https://lilmgenius.notion.site/",
+      details: [
+        {
+          title: "맥락",
+          body: "이 케이스는 고객 납품 한 건이라기보다 SLIT이 어떤 수준의 실행자와 문제를 정의하고 구현하는지 보여주는 신뢰 증거입니다.",
+        },
+        {
+          title: "접근",
+          body: "프로젝트 맥락을 빠르게 구조화하고, AX 전략과 실제 구현 사이의 간극을 줄이는 방식으로 협업합니다.",
+        },
+        {
+          title: "의미",
+          body: "지원자에게는 같이 일하는 네트워크의 수준을 보여주고, 고객에게는 SLIT이 단독 실행만이 아니라 강한 파트너십으로 프로젝트를 밀어붙일 수 있음을 보여줍니다.",
+        },
+      ],
     },
     {
-      title:
-        "🔎 [퍼포먼스 마케터 김지혜님] 데이터에 얽히고설킨 인사이트를 찾는 마케터",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa19d011b-0748-4d00-95d1-bd312c8de398%2F2678746a-e6f6-48b4-8a3c-ac71490f251d%2F%25EA%25B9%2580%25EC%25A7%2580%25ED%2598%259C%25EB%258B%2598_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EB%25A9%2594%25EC%259D%25B8%25EC%2582%25AC%25EC%25A7%2584.jpg&blockId=2d2db7f5-8f0a-814c-bcff-f97f9b660238",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "Neural Arcade AX",
+      image: projectImage("slit-neural-arcade-case"),
+      description:
+        "헬로우봇을 만드는 AI 엔터테인먼트 앱 스타트업과 진행 중인 AX 프로젝트.",
+      tags: ["Ongoing", "AI Entertainment", "Workflow Automation"],
+      proof:
+        "HelloBot은 Google Play에서 NEURAL ARCADE 개발자로 공개되어 있으며 1M+ 다운로드, 40.9K 리뷰, 4.2점을 보유",
+      href: "https://www.neuralarcade.ai/",
+      details: [
+        {
+          title: "맥락",
+          body: "Neural Arcade는 게임적 재미와 AI 챗봇을 결합한 엔터테인먼트 앱 스튜디오 맥락을 공개하고 있습니다.",
+        },
+        {
+          title: "접근",
+          body: "현재 진행 중인 프로젝트이므로 SLIT의 범위는 과장하지 않고 AX 구축, 운영 워크플로우 자동화, AI 도입 실험처럼 수정 가능한 표현으로 둡니다.",
+        },
+        {
+          title: "의미",
+          body: "검증된 컨슈머 AI 서비스와 일한다는 사실 자체가 강한 포트폴리오 재료입니다. 향후 실제 산출물과 과정을 추가하면 고객용 케이스 스터디로도 바로 확장됩니다.",
+        },
+      ],
     },
     {
-      title: "🚀 [조직문화 매니저 최지명님] 팀민트의 한달은 GE의 한달과 다르다",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0854b3d9-1704-41e6-ac53-31c3fa4edfd3%2F%25EA%25B5%25AC%25EC%2584%25B1%25EC%259B%2590_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EC%25B5%259C%25EC%25A7%2580%25EB%25AA%2585.jpg&blockId=2d2db7f5-8f0a-81be-8a42-e1a9d9784a85",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "Outsome 배치 관리/커뮤니티 서비스",
+      image: projectImage("slit-outsome-case"),
+      description:
+        "운영자가 반복적으로 처리하던 배치 관리와 커뮤니티 운영 흐름을 웹 서비스로 정리한 구축 프로젝트.",
+      tags: ["Admin Tool", "Community", "Operations"],
+      proof: "운영 흐름을 화면과 관리 구조로 바꾼 실무형 프로젝트",
+      details: [
+        {
+          title: "문제",
+          body: "운영자가 반복 업무를 수동으로 처리하면 기록이 흩어지고, 커뮤니티의 상태를 한눈에 보기 어렵습니다.",
+        },
+        {
+          title: "구축",
+          body: "배치 관리, 멤버 상태, 운영 기록을 관리자가 확인할 수 있는 서비스 흐름으로 묶는 방향으로 설계합니다.",
+        },
+        {
+          title: "포트폴리오 가치",
+          body: "복잡한 운영 업무를 인터페이스와 정보 구조로 바꾸는 능력을 보여주는 케이스입니다.",
+        },
+      ],
     },
     {
-      title: "🌿 [브랜드 마케터 고재영님] 빠르게 성장하는 시장에서의 에피소드",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4bdb52ce-6de0-45a1-8b97-beac679e61c2%2F%25EA%25B5%25AC%25EC%2584%25B1%25EC%259B%2590_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EA%25B3%25A0%25EC%259E%25AC%25EC%2598%2581%25EB%258B%25982.jpg&blockId=2d2db7f5-8f0a-8132-8fb8-eb34c602c36f",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "법무법인 로톡 자동 답변 프로그램",
+      image: projectImage("slit-lawtalk-case"),
+      description:
+        "반복 문의와 응대 문맥을 정리해 더 빠르고 일관된 답변 흐름을 만들기 위한 자동화 프로그램.",
+      tags: ["Legal Ops", "Automation", "Response Flow"],
+      proof: "전문 도메인의 반복 응대를 구조화한 자동화 케이스",
+      details: [
+        {
+          title: "문제",
+          body: "법률 영역의 응대는 단순 템플릿으로 처리하기 어렵고, 맥락과 표현의 정확성이 중요합니다.",
+        },
+        {
+          title: "접근",
+          body: "문의 유형과 답변 흐름을 분리하고, 사람이 검토하기 쉬운 자동 답변 초안 구조를 만듭니다.",
+        },
+        {
+          title: "의미",
+          body: "AI와 자동화가 전문 서비스 운영을 어떻게 보조할 수 있는지 보여주는 케이스입니다.",
+        },
+      ],
     },
     {
-      title: "✨ [디자인팀 이주형님] 스타트업에서 일한다는 것",
-      image:
-        "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa19d011b-0748-4d00-95d1-bd312c8de398%2F74aabde8-0ee4-4e98-8f2a-79a037238f21%2F%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25ED%258C%2580_%25EC%259D%25B4%25EC%25A3%25BC%25ED%2598%2595%25EB%258B%2598_%25EC%259D%25B8%25ED%2584%25B0%25EB%25B7%25B0_%25EB%25A9%2594%25EC%259D%25B8%25EC%2582%25AC%25EC%25A7%2584.jpg&blockId=2d2db7f5-8f0a-81a3-bfd1-d329a52feff8",
-      href: "https://recruit.team-mint.io/2d2db7f58f0a81949b04c1de3e4c3f00",
+      title: "ArtWizard 3D 전시 웹사이트",
+      image: projectImage("slit-artwizard-case"),
+      description:
+        "전시 콘텐츠를 웹에서 탐색할 수 있도록 3D 경험과 정보 구조를 결합한 웹사이트 프로젝트.",
+      tags: ["3D Web", "Exhibition", "Interactive"],
+      proof: "기술 구현과 시각 경험을 함께 설계한 프로젝트",
+      details: [
+        {
+          title: "문제",
+          body: "전시는 공간감과 탐색 경험이 중요하기 때문에 일반 소개 페이지보다 몰입형 웹 구성이 필요합니다.",
+        },
+        {
+          title: "구축",
+          body: "3D 전시 경험, 작품 정보, 사용자 이동 흐름을 웹 안에서 자연스럽게 연결하는 방향으로 구현합니다.",
+        },
+        {
+          title: "의미",
+          body: "디자이너가 합류하면 이 케이스는 인터랙션, 전시 브랜딩, 프로젝트 비주얼을 강하게 보여주는 포트폴리오가 됩니다.",
+        },
+      ],
+    },
+    {
+      title: "Peopet 펫샵 웹사이트/자동화 에이전트",
+      image: projectImage("slit-peopet-case"),
+      description:
+        "펫샵의 웹 접점과 반복 운영 업무를 함께 정리하는 웹사이트 및 자동화 에이전트 프로젝트.",
+      tags: ["Local Business", "Website", "Automation Agent"],
+      proof: "소상공인 운영 흐름까지 제품화 관점으로 본 프로젝트",
+      details: [
+        {
+          title: "문제",
+          body: "펫샵은 예약, 문의, 상품 안내, 고객 관리가 함께 움직이지만 작은 사업장에서는 자동화 여력이 부족합니다.",
+        },
+        {
+          title: "접근",
+          body: "웹사이트를 단순 소개 페이지로 끝내지 않고, 반복 문의와 운영 흐름을 자동화 에이전트로 연결하는 방향을 잡습니다.",
+        },
+        {
+          title: "의미",
+          body: "SLIT이 B2B 전문 도메인뿐 아니라 작은 운영 현장에도 같은 방식으로 접근할 수 있음을 보여줍니다.",
+        },
+      ],
+    },
+    {
+      title: "SPEC 홈페이지/커뮤니티 운영",
+      image: projectImage("slit-spec-case"),
+      description:
+        "홈페이지와 커뮤니티 운영을 함께 다루며 콘텐츠, 모집, 참여 흐름을 정리한 운영형 프로젝트.",
+      tags: ["Community", "Website", "Content Ops"],
+      proof: "커뮤니티와 채널 운영 경험을 보여주는 공개 가능한 케이스",
+      details: [
+        {
+          title: "문제",
+          body: "커뮤니티는 웹사이트, 콘텐츠, 모집 메시지, 운영 리듬이 따로 놀면 신뢰가 떨어집니다.",
+        },
+        {
+          title: "구축",
+          body: "홈페이지 구조와 커뮤니티 운영 메시지를 맞추고, 참여자가 이해하기 쉬운 흐름으로 정리합니다.",
+        },
+        {
+          title: "의미",
+          body: "디자인과 콘텐츠 운영이 연결되는 지점이라 초기 디자이너가 크게 기여할 수 있는 프로젝트입니다.",
+        },
+      ],
+    },
+    {
+      title: "ANYON",
+      image: projectImage("slit-anyon-case"),
+      description:
+        "프로젝트 맥락을 계속 업데이트할 수 있도록 독립 케이스 블록으로 둔 SLIT의 실험/구축 포트폴리오.",
+      tags: ["Experiment", "Product", "Editable Case"],
+      proof: "추가 설명을 붙이기 쉽게 분리한 케이스",
+      details: [
+        {
+          title: "현재 상태",
+          body: "ANYON은 사용자가 나중에 구체 설명을 보강할 수 있도록, 지금은 과도한 단정 없이 독립 프로젝트로 둡니다.",
+        },
+        {
+          title: "작성 방식",
+          body: "문제, 접근, 결과가 확정되는 대로 같은 구조에 내용을 채우면 됩니다.",
+        },
+        {
+          title: "의미",
+          body: "완성된 프로젝트뿐 아니라 실험과 구축의 흔적도 회사 포트폴리오의 일부로 관리한다는 메시지를 줍니다.",
+        },
+      ],
     },
   ],
   sections: [
     {
-      title: "[호치민 오피스 법인장 조규헌님] 녹슬지 않으려면 움직여야죠",
+      title: "자세히 보기",
       body: [
-        "규헌님은 스스로 녹슬어 가는 것을 방지하기 위해 계속해서 성장을 쫓고 있는 Refresh People입니다. 빠르게 변화하는 업계를 관찰하며 더 나은 답을 찾아가고 있습니다.",
-      ],
-    },
-    {
-      title: "[퍼포먼스 마케터 신유나님] 팀민트 1호 인턴, 뿅아리의 성장기",
-      body: [
-        "1호 인턴으로 합류하여 이제는 하나의 프로젝트를 리딩하는 퍼포먼스 마케터로 성장한 유나님의 이야기를 담았습니다.",
-      ],
-    },
-    {
-      title:
-        "[퍼포먼스 마케터 김지혜님] 데이터에 얽히고설킨 인사이트를 찾는 마케터",
-      body: [
-        "마케터의 기초 체력을 바탕으로 광고 업계에서 커리어를 이어가고 있는 지혜님의 관점을 소개합니다.",
-      ],
-    },
-    {
-      title: "[조직문화 매니저 최지명님] 팀민트의 한달은 GE의 한달과 다르다",
-      body: [
-        "스타트업이라는 다른 환경에 자발적으로 뛰어든 조직문화 담당자의 도전과 배움을 담았습니다.",
+        "각 프로젝트 카드는 자세히 보기 영역을 열면 문제, 접근, 구축 내용, 결과, 포트폴리오로서의 의미를 확인할 수 있습니다.",
       ],
     },
   ],
@@ -81,114 +229,64 @@ export const interviewsPage = {
 export const lifePage = {
   key: "life",
   path: routePaths.life,
-  title: "팀민트 라이프",
-  breadcrumb: "팀민트 채용페이지 / 팀민트 라이프",
+  title: "일하는 환경",
+  breadcrumb: "SLIT Portfolio / 일하는 환경",
   intro: [
-    "더 깊은 몰입과\n더 높은 성취, 그리고\n우리의 성장을 위해",
-    "팀민트가 끊임없이 고민하는 것이 있습니다.\n\n서로 신뢰하고 협업 할 수 있는 건강한 문화,\n온전한 몰입과 짜릿한 성취를 느낄 수 있는 환경,\n궁극적으로 조직과 개인이 함께 성장하는 회사가 되는 것입니다.\n\n물론 지금의 우리는 완벽하지 않고, 성장의 여정 한가운데에 있습니다.\n그렇기에 끊임없이 더 나은 환경과 좋은 방식을 찾아 시도하고 변화하며 개선해 나가려 합니다.",
+    "초기팀의 속도와\n포트폴리오가 되는 산출물",
+    "SLIT의 일하는 환경은 아직 대기업식 복지가 아니라, 실제 프로젝트와 성과를 빠르게 자기 결과물로 만들 수 있는 환경에 가깝습니다.\n\n온라인 협업을 기본으로 두고, 필요할 때 내방역 근처 오피스에서 만나 문제를 정리합니다. 자료, 웹, 브랜드, 콘텐츠가 따로 떨어져 있지 않기 때문에 한 사람이 넓게 보고 빠르게 고칠 수 있습니다.",
   ],
   sections: [
     {
-      title: "몰입을 위한 업무 환경",
+      title: "협업 방식",
       body: [
-        "온전히 업무에 몰입하고, 더 효율적으로 일하기 위한 업무 환경을 지원해요.",
+        "작은 팀이기 때문에 긴 문서보다 빠른 공유와 산출물 중심의 협업을 선호합니다.",
       ],
       columns: [
         {
-          title: "유연근무",
-          body: "9-10시 사이에 자유롭게 출퇴근 할 수 있습니다. 업무 효율성을 위해 필요하다면 출퇴근 장소를 변경할 수 있고, 사무실을 벗어나 카페에서 근무하기도 합니다. 다만 협업을 위해 팀원들에게 상황을 미리 공유하는 것을 원칙으로 하고 있습니다.",
+          title: "온라인 중심",
+          body: "기본 협업은 온라인으로 가능하게 설계합니다. 필요한 회의와 리뷰만 선명하게 잡습니다.",
         },
         {
-          title: "리프레시룸 / 사내 카페",
-          body: "집중이 안 될 땐 잠시 쉬고 다시 온전히 몰입할 수 있도록, 재충전을 위한 리프레시룸과 사내 카페가 마련되어 있습니다.",
+          title: "내방역 오피스",
+          body: "대면 정리가 필요할 때는 내방역 근처에서 만나 자료와 화면을 같이 봅니다.",
         },
         {
-          title: "야근 식대 & 택시비 지원",
-          body: "부득이하게 연장 근무를 진행하게 될 경우, 잘 챙겨 먹고 조금이라도 편안하고 안전히 귀가할 수 있도록 야근 식대와 택시비를 지원하고 있습니다.",
+          title: "산출물 중심",
+          body: "회의가 끝나면 문장, 화면, 덱, 리스트처럼 다음 행동이 가능한 형태로 남깁니다.",
         },
       ],
     },
     {
-      title: "성장을 돕는 \n교육 프로그램",
-      body: ["성장 의지가 가득한 리프레시 피플의 실질적인 성장을 돕고 있어요."],
-      columns: [
-        {
-          title: "신규입사자 온보딩",
-          body: "낯선 환경에 빠르고 안정적으로 적응할 수 있도록, 온보딩 프로그램을 운영하고 있어요. 버디 프로그램, 웰컴 런치, 온보딩 미션 등을 진행하고 있습니다.",
-        },
-        {
-          title: "직무 교육",
-          body: "직무별 핵심 역량을 키울 수 있도록, 교육 커리큘럼을 바탕으로 온/오프라인을 통한 사내 직무 교육 프로그램을 운영하고 있습니다.",
-        },
-        {
-          title: "전사 공통 역량 & 리더십 교육",
-          body: "구조적 문제 해결, 리더십 등 구성원들이 일을 더 잘 하는데 필요한 핵심 역량을 키울 수 있도록 사내 교육 프로그램을 운영합니다.",
-        },
-        {
-          title: "AI 역량 강화",
-          body: "실무에 필요한 AI 툴을 지원하고, 단순 툴 활용을 넘어 업무 방식을 개선하고 효율화할 수 있도록 돕는 교육을 제공합니다.",
-        },
-        {
-          title: "사내 도서관",
-          body: "다양한 지식을 접하고 쌓을 수 있도록, 사내 도서관에 매월 신간 도서가 제공됩니다.",
-        },
-      ],
-    },
-    {
-      title: "함께 만든 성과\n함께 나누는 보상",
+      title: "성장 재료",
       body: [
-        "함께 이룬 성과가 우리의 성장이 되도록, 구성원의 기여를 인정하고 일상을 뒷받침해요.",
+        "이 역할의 장점은 이미 쌓인 프로젝트와 성과를 포트폴리오로 정리할 재료가 많다는 점입니다.",
       ],
       columns: [
         {
-          title: "성과 인센티브",
-          body: "함께 만든 성과를 구성원과 나누는 구조를 만들기 위해 고민합니다. 25년 상반기 손익분기점 달성 이후, 반기 영업이익의 20%를 성과 인센티브로 지급하고 있습니다.",
+          title: "공개 증빙",
+          body: "수상, 프로그램 선정, 공개 앱, 외부 프로젝트처럼 직접 확인 가능한 증거를 자료에 녹입니다.",
         },
         {
-          title: "자기계발비 및 외부 교육 지원",
-          body: "매달 5만원씩, 성장에 필요한 자기계발비를 지급하고 있어요. 구성원의 직무 역량 향상을 위한 외부 교육도 지원하고 있습니다.",
+          title: "실제 고객 문제",
+          body: "가상의 과제가 아니라 고객과 현장에서 나온 문제를 웹과 자료로 설명합니다.",
         },
         {
-          title: "점심 식대 지원 ",
-          body: "든든하게 먹고 일할 힘을 얻을 수 있도록, 매달 15만원의 점심 식대를 지원하고 있습니다.",
+          title: "넓은 역할",
+          body: "브랜드, 웹, 제안서, 제품 소개, 프로젝트 케이스 스터디를 상황에 맞게 넘나듭니다.",
         },
       ],
     },
     {
-      title: "열린 소통과 \n건강한 유대",
-      body: [
-        "투명하게 공유하고, 열린 분위기에서 소통하며, 건강하게 연결되기 위해 노력해요.",
-      ],
+      title: "아직 확정할 것",
+      body: ["보상, 투입 시간, 지원 경로는 협업 형태에 맞춰 업데이트합니다."],
       columns: [
         {
-          title: "분기별 전사 타운홀",
-          body: "매 분기(3개월)마다 전사 타운홀을 진행합니다. 팀민트의 사업 방향, 캠페인 현황, 주요 소식, 구성원 서베이 결과 등을 전 구성원에게 공유하고, 실시간 익명 Q&A를 통해 투명하게 소통하고 있습니다.",
+          title: "근무 형태",
+          body: "프로젝트, 파트타임, 계약 형태를 열어두고 역할과 투입 시간을 먼저 맞춥니다.",
         },
         {
-          title: "창립기념일 행사",
-          body: "매년 팀민트의 출발을 기념하는 행사를 진행합니다. 전 구성원이 모여 함께 소통하고 교류할 수 있습니다.",
-        },
-      ],
-    },
-    {
-      title: "충분한 휴식과 재충전",
-      body: ["몰입의 순간을 위해 구성원의 쉼과 재충전에 대해 고민해요."],
-      columns: [
-        {
-          title: "생일 기념 반차 & 다과비",
-          body: "기쁜날을 더 즐겁게 보낼 수 있도록, 4만원 이내의 케이크 구입비와 생일 기념 반차를 제공합니다.",
-        },
-        {
-          title: "명절 단축 근무 & 선물 지급",
-          body: "명절 전날에는 단축 근무를 시행하고, 명절 선물을 지급합니다. 팀민트로 들어온 명절 선물은 전사 추첨을 통해 구성원과 나누고 있습니다.",
-        },
-        {
-          title: "한 달에 두 번 조기퇴근",
-          body: "한 달에 두 번, 원하는 날에 2시간 조기 퇴근을 사용할 수 있습니다.",
-        },
-        {
-          title: "롱치데이",
-          body: "월급 날엔 점심 시간 2시간으로, 롱치 데이를 즐길 수 있습니다.",
+          title: "지원 경로",
+          body: "지원/문의 경로는 업데이트 예정입니다. v1에서는 이 문구를 placeholder로 둡니다.",
         },
       ],
     },

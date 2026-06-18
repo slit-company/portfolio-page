@@ -24,17 +24,30 @@ describe("route registry", () => {
     }
   });
 
-  it("keeps navigation data shared and complete", () => {
+  it("keeps SLIT navigation data shared and complete", () => {
     const navLabels = navItems.map((item) => item.label);
     expect(navLabels).toEqual([
       "회사소개",
-      "조직문화",
-      "민트 라이프",
+      "일하는 방식",
+      "프로젝트",
       "합류 여정",
       "채용 공고",
     ]);
     expect(
       navItems.flatMap((item) => item.children ?? []).map((item) => item.label),
-    ).toContain("구성원 인터뷰");
+    ).toContain("프로젝트 포트폴리오");
+  });
+
+  it("replaces the public recruiting shell with SLIT portfolio content", () => {
+    const allText = JSON.stringify({ navItems, pages, siteRoutes });
+
+    expect(allText).toContain("SLIT");
+    expect(allText).toContain("Recova");
+    expect(allText).toContain("Neural Arcade");
+    expect(allText).toContain("d8d / lilmgenius");
+    expect(allText).toContain("자세히 보기");
+    expect(allText).not.toMatch(
+      /팀민트|TEAM MINT|team-mint|ReFit|Mix|호치민|퍼포먼스 마케터|Refresh People|people@team-mint\.io/,
+    );
   });
 });

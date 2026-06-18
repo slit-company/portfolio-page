@@ -14,9 +14,9 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
           </h3>
           <div className="overflow-hidden">
             <div className="hidden border-b border-[rgba(55,53,47,0.12)] py-1.5 text-sm text-[rgba(55,53,47,0.55)] md:grid md:grid-cols-[360px_116px_116px]">
-              <span>Aa 채용 중인 포지션</span>
-              <span>☷ 구분</span>
-              <span>☷ 경력</span>
+              <span>채용 중인 포지션</span>
+              <span>구분</span>
+              <span>경험</span>
             </div>
             <div className="hidden md:block">
               {group.jobs.map((job) => (
@@ -28,7 +28,7 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
                   target="_blank"
                 >
                   <span className="font-medium underline decoration-[rgba(55,53,47,0.25)] underline-offset-2">
-                    🌱 {job.title}
+                    {job.title}
                   </span>
                   <span>
                     <span className="rounded bg-[#e4f3df] px-1.5 py-0.5 text-[#276335]">
@@ -53,7 +53,7 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
                   target="_blank"
                 >
                   <p className="font-bold leading-6 underline decoration-[rgba(55,53,47,0.25)] underline-offset-2">
-                    🌱 {job.title}
+                    {job.title}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2 text-sm">
                     {[

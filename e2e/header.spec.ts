@@ -14,7 +14,7 @@ async function requireBox(locator: Locator, name: string) {
   return box;
 }
 
-test.describe("team mint header", () => {
+test.describe("SLIT header", () => {
   test("desktop header follows the flat five-column reference layout", async ({
     page,
     isMobile,
@@ -26,7 +26,7 @@ test.describe("team mint header", () => {
     await page.goto("/");
     const header = page.locator("header").first();
     const nav = page.getByRole("navigation", { name: "주요 메뉴" });
-    const cultureLabel = nav.getByRole("button", { name: "조직문화" });
+    const cultureLabel = nav.getByRole("button", { name: "일하는 방식" });
     await expect(page.getByRole("button", { name: "더보기" })).toHaveCount(0);
 
     const headerBox = await requireBox(header, "desktop header");
@@ -34,13 +34,13 @@ test.describe("team mint header", () => {
     expect(headerBox.height).toBeLessThanOrEqual(49);
 
     const logoBox = await requireBox(
-      page.getByAltText("teammint").first(),
+      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
       "desktop logo",
     );
     expect(logoBox.x).toBeGreaterThanOrEqual(10);
     expect(logoBox.x).toBeLessThanOrEqual(14);
-    expect(logoBox.width).toBeGreaterThanOrEqual(160);
-    expect(logoBox.width).toBeLessThanOrEqual(170);
+    expect(logoBox.width).toBeGreaterThanOrEqual(186);
+    expect(logoBox.width).toBeLessThanOrEqual(190);
 
     const navBox = await requireBox(nav, "desktop nav");
     expect(navBox.x).toBeGreaterThanOrEqual(187);
@@ -50,8 +50,8 @@ test.describe("team mint header", () => {
 
     const labels = [
       "회사소개",
-      "조직문화",
-      "민트 라이프",
+      "일하는 방식",
+      "프로젝트",
       "합류 여정",
       "채용 공고",
     ];
@@ -91,7 +91,7 @@ test.describe("team mint header", () => {
       submenu.getByRole("link", { name: "일을 대하는 우리의 태도" }),
     ).toBeVisible();
     await expect(
-      submenu.getByRole("link", { name: "팀민트 컬처덱" }),
+      submenu.getByRole("link", { name: "일하는 환경" }),
     ).toBeVisible();
 
     const submenuBox = await requireBox(submenu, "submenu strip");
@@ -109,12 +109,12 @@ test.describe("team mint header", () => {
       "rgb(245, 245, 245)",
     );
 
-    await nav.getByRole("button", { name: "민트 라이프" }).hover();
+    await nav.getByRole("button", { name: "프로젝트" }).hover();
     await expect(
-      submenu.getByRole("link", { name: "구성원 인터뷰" }),
+      submenu.getByRole("link", { name: "프로젝트 포트폴리오" }),
     ).toBeVisible();
     await expect(
-      submenu.getByRole("link", { name: "팀민트 라이프" }),
+      submenu.getByRole("link", { name: "Recova와 실적" }),
     ).toBeVisible();
 
     await nav.getByRole("link", { name: "합류 여정" }).hover();
@@ -134,12 +134,12 @@ test.describe("team mint header", () => {
     );
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "주요 메뉴" });
-    const cultureLabel = nav.getByRole("button", { name: "조직문화" });
+    const cultureLabel = nav.getByRole("button", { name: "일하는 방식" });
     const submenu = page.getByRole("region", { name: "하위 메뉴" });
 
     await page.keyboard.press("Tab");
     await expect(
-      page.getByRole("link", { name: "팀민트 채용페이지 홈" }),
+      page.getByRole("link", { name: "SLIT Portfolio 홈" }),
     ).toBeFocused();
     await page.keyboard.press("Tab");
     await expect(nav.getByRole("link", { name: "회사소개" })).toBeFocused();
@@ -161,7 +161,7 @@ test.describe("team mint header", () => {
       .poll(() =>
         page.evaluate(() => document.activeElement?.textContent?.trim()),
       )
-      .toBe("조직문화");
+      .toBe("일하는 방식");
 
     await page.keyboard.press("Escape");
     await expect(submenu).toBeHidden();
@@ -169,7 +169,7 @@ test.describe("team mint header", () => {
       .poll(() =>
         page.evaluate(() => document.activeElement?.textContent?.trim()),
       )
-      .toBe("조직문화");
+      .toBe("일하는 방식");
 
     await page.keyboard.press("Space");
     await expect(submenu).toBeVisible();
@@ -179,14 +179,14 @@ test.describe("team mint header", () => {
       .poll(() =>
         page.evaluate(() => document.activeElement?.textContent?.trim()),
       )
-      .toBe("조직문화");
+      .toBe("일하는 방식");
 
     await page.keyboard.press("Enter");
     await expect(submenu).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(submenu).toBeHidden();
 
-    const lifeLabel = nav.getByRole("button", { name: "민트 라이프" });
+    const lifeLabel = nav.getByRole("button", { name: "프로젝트" });
     await lifeLabel.hover();
     await expect(submenu).toBeVisible();
     await page.mouse.move(20, 240);
@@ -226,7 +226,7 @@ test.describe("team mint header", () => {
     await expect(menuButton).toBeVisible();
 
     const logoBox = await requireBox(
-      page.getByAltText("teammint").first(),
+      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
       "tablet logo",
     );
     const buttonBox = await requireBox(menuButton, "tablet menu button");
@@ -250,7 +250,7 @@ test.describe("team mint header", () => {
     await expect(nav).toBeVisible();
 
     const logoBox = await requireBox(
-      page.getByAltText("teammint").first(),
+      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
       "narrow desktop logo",
     );
     const companyBox = await requireBox(
@@ -259,7 +259,7 @@ test.describe("team mint header", () => {
     );
     expect(logoBox.x + logoBox.width).toBeLessThan(companyBox.x);
 
-    await nav.getByText("조직문화", { exact: true }).hover();
+    await nav.getByText("일하는 방식", { exact: true }).hover();
     const firstChild = page
       .getByRole("region", { name: "하위 메뉴" })
       .getByRole("link", { name: "일을 대하는 우리의 태도" });

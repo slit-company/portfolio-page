@@ -37,19 +37,28 @@ export type LinkCard = {
   readonly href: string;
 };
 
+export type ProjectDetail = {
+  readonly title: string;
+  readonly body: string;
+};
+
 export type InterviewCard = {
   readonly title: string;
   readonly image: string;
-  readonly href: string;
+  readonly href?: string;
+  readonly description?: string;
+  readonly tags?: readonly string[];
+  readonly proof?: string;
+  readonly details?: readonly ProjectDetail[];
 };
 
 export type JobPosting = {
   readonly title: string;
   readonly href: string;
-  readonly employment: "정규직" | "계약직";
+  readonly employment: "프로젝트" | "파트타임" | "계약직";
   readonly experience: string;
   readonly status: "Open";
-  readonly location: "서울" | "호치민";
+  readonly location: "온라인" | "내방역" | "온/오프라인";
 };
 
 export type JobGroup = {

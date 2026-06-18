@@ -54,7 +54,7 @@ export function PageRenderer({ page }: { readonly page: PageContent }) {
     return (
       <PageFrame page={page}>
         <PageTitle>{page.title}</PageTitle>
-        <InterviewIntroCallout />
+        <InterviewIntroCallout lines={page.intro} />
         {page.interviewCards ? (
           <InterviewGrid cards={page.interviewCards} />
         ) : null}

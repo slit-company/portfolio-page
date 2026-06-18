@@ -10,11 +10,13 @@ const routes = [
   "/2d2db7f5-8f0a-81b7-b5b6-d7f08537b507",
 ] satisfies readonly string[];
 
-test.describe("team mint clone", () => {
+test.describe("SLIT portfolio recruiting site", () => {
   for (const route of routes) {
     test(`renders ${route}`, async ({ page }) => {
       await page.goto(route);
-      await expect(page.getByAltText("teammint").first()).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
+      ).toBeVisible();
       await expect(page.locator("h1").first()).toBeVisible();
       await expect(page.locator("body")).not.toContainText("Deploy Now");
       const overflow = await page.evaluate(
@@ -55,7 +57,7 @@ test.describe("team mint clone", () => {
   });
 
   test("unknown route renders the not-found surface", async ({ page }) => {
-    const response = await page.goto("/not-a-real-team-mint-page");
+    const response = await page.goto("/not-a-real-slit-page");
 
     expect(response?.status()).toBe(404);
     await expect(page.locator("body")).toContainText("404");

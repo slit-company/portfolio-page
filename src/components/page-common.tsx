@@ -188,23 +188,20 @@ export function LinkCards({
 
 export function ContactCta() {
   return (
-    <Reveal className="mt-24 rounded-[20px] bg-[rgba(55,53,47,0.06)] p-6">
+    <Reveal
+      className="mt-24 rounded-[20px] bg-[rgba(55,53,47,0.06)] p-6"
+      id="application"
+    >
       <p className="text-[15px] leading-7">
-        팀민트는 채용 관련 궁금한 내용을 직접 물어볼 수 있는 10분 콜챗을
-        운영합니다. 채용 홈페이지에서 충분히 설명되지 않은 부분이 있다면 콜챗
-        또는 팀민트 채용메일{" "}
-        <a className="font-bold text-inherit" href="mailto:people@team-mint.io">
-          people@team-mint.io
-        </a>
-        로 연락 부탁드립니다.
+        지원/문의 경로는 업데이트 예정입니다. 그 전까지는 포트폴리오와 작업 가능
+        범위를 먼저 정리해두고, SLIT이 가진 프로젝트를 어떤 브랜드, 웹, 자료,
+        콘텐츠로 바꿀 수 있을지 중심으로 이야기합니다.
       </p>
       <Button
         asChild
         className="mt-5 h-10 rounded-lg bg-black px-4 text-white hover:bg-black/80"
       >
-        <a href={callChatUrl} rel="noreferrer" target="_blank">
-          10분 콜챗 신청하기
-        </a>
+        <a href={callChatUrl}>지원/문의 경로 확인하기</a>
       </Button>
     </Reveal>
   );
@@ -213,7 +210,7 @@ export function ContactCta() {
 export function PageFooter() {
   return (
     <footer className="mt-20 flex flex-col gap-3 pb-12 text-sm text-[rgba(55,53,47,0.68)] md:flex-row md:items-center md:justify-between">
-      <p>2025 teammint, inc. All Rights Reserved.</p>
+      <p>2026 SLIT. Portfolio and recruiting page.</p>
       <Link
         className="font-bold text-inherit no-underline"
         href={routePaths.home}

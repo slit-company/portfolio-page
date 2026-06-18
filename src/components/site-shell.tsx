@@ -2,12 +2,11 @@
 
 import {
   ArrowUp,
-  BookOpenText,
+  BriefcaseBusiness,
   Home,
   MessageCircle,
   MoreHorizontal,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DesktopNav } from "@/components/site-desktop-nav";
@@ -19,7 +18,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { callChatUrl, logoUrl, routePaths } from "@/content/routes";
+import { callChatUrl, routePaths } from "@/content/routes";
 import { cn } from "@/lib/utils";
 
 type SiteShellProps = {
@@ -62,20 +61,13 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
       <div className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left scale-x-[var(--scroll-progress,0)] bg-[rgb(154,226,196)]" />
       <header className="sticky top-0 z-50 flex h-12 w-full items-center border-b border-[rgb(55_53_47/0.09)] bg-white px-0">
         <Link
-          aria-label="팀민트 채용페이지 홈"
+          aria-label="SLIT Portfolio 홈"
           className="flex h-12 w-[188px] flex-none items-center pl-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(55_53_47/0.18)]"
           href={routePaths.home}
         >
-          <Image
-            alt="teammint"
-            className="object-contain"
-            height={20}
-            priority
-            src={logoUrl}
-            style={{ height: "20px", width: "165px" }}
-            unoptimized
-            width={165}
-          />
+          <span className="tm-oopy-nav-font text-[19px] font-extrabold tracking-normal text-[var(--tm-text)]">
+            SLIT
+          </span>
         </Link>
         <DesktopNav />
         <MobileNav />
@@ -99,23 +91,19 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <Link href={routePaths.home}>
                 <Home className="size-4" />
-                팀민트 채용페이지
+                SLIT Portfolio
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
-              <a
-                href="https://drive.google.com/file/d/1Pr2n6i2PPHl0FP3vwPN-Olpcx3fHCtac/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <BookOpenText className="size-4" />
-                팀민트 컬처덱
-              </a>
+              <Link href={routePaths.interviews}>
+                <BriefcaseBusiness className="size-4" />
+                프로젝트 포트폴리오
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <a href={callChatUrl} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
-                10분 콜챗 신청하기
+                지원/문의 경로 확인하기
               </a>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -129,7 +117,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
           target="_blank"
           rel="noreferrer"
         >
-          10분 콜챗 신청하기
+          지원/문의 경로 확인하기
         </a>
       ) : null}
       <Button

@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "팀민트 채용페이지",
+  title: "SLIT Portfolio",
   description:
-    "마케팅 시장을 혁신하는 팀민트에서 위대한 도전을 함께할 인재를 찾습니다.",
+    "Recova와 SLIT 프로젝트 실적을 정리한 회사 포트폴리오형 채용 페이지입니다.",
 };
 
 export default function RootLayout({
