@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 function SubmenuAnchor({ item }: { readonly item: NavItem }) {
   const className =
-    "tm-oopy-nav-font flex min-h-10 w-full min-w-0 items-center justify-center rounded-none px-2 py-1 text-center text-[14px] font-medium leading-5 text-[var(--tm-text)] no-underline transition-colors duration-150 break-keep hover:bg-[rgb(245,245,245)] focus-visible:bg-[rgb(245,245,245)] focus-visible:outline-none";
+    "tm-oopy-nav-font flex min-h-10 w-full min-w-0 items-center justify-center rounded-none px-2 py-1 text-center text-[15px] font-medium leading-5 text-[var(--tm-text)] no-underline transition-colors duration-150 break-keep hover:bg-[rgb(245,245,245)] focus-visible:bg-[rgb(245,245,245)] focus-visible:outline-none";
 
   if (!item.href) {
     return <span className={className}>{item.label}</span>;
@@ -51,10 +51,13 @@ function TopNavItem({
   ) => void;
 }) {
   const hasPanel = Boolean(item.children?.length);
-  const className = cn(
-    "tm-oopy-nav-font inline-flex h-12 w-full items-center justify-center bg-transparent px-2 text-center text-[16px] font-bold leading-none text-[var(--tm-text)] no-underline transition-colors duration-150 hover:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[rgb(55_53_47/0.18)]",
-    active ? "text-[var(--tm-text)]" : "text-[var(--tm-text)]",
+  const className =
+    "group tm-oopy-nav-font inline-flex h-12 w-full items-center justify-center bg-transparent px-2 text-center text-[17px] font-bold leading-none text-[var(--tm-text)] no-underline transition-colors duration-150 hover:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[rgb(55_53_47/0.18)]";
+  const labelClassName = cn(
+    "relative inline-flex items-center after:pointer-events-none after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[var(--tm-text)] after:transition-transform after:duration-150 after:ease-out group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100",
+    active ? "after:scale-x-100" : undefined,
   );
+  const label = <span className={labelClassName}>{item.label}</span>;
 
   if (!item.href) {
     return (
@@ -69,7 +72,7 @@ function TopNavItem({
         ref={setControlRef}
         type="button"
       >
-        {item.label}
+        {label}
       </button>
     );
   }
@@ -85,7 +88,7 @@ function TopNavItem({
         target="_blank"
         rel="noreferrer"
       >
-        {item.label}
+        {label}
       </a>
     );
   }
@@ -98,7 +101,7 @@ function TopNavItem({
       onMouseEnter={onActivate}
       ref={setControlRef}
     >
-      {item.label}
+      {label}
     </Link>
   );
 }
@@ -178,12 +181,21 @@ export function DesktopNav() {
         {submenuChildren.length > 0 && activeIndex >= 0 ? (
           <motion.section
             aria-label="하위 메뉴"
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, scaleY: 1, y: 0 }}
             className="fixed left-0 top-12 z-[61] h-[104px] w-screen overflow-hidden border-b border-[rgb(55_53_47/0.09)] bg-white"
-            exit={prefersReducedMotion ? undefined : { opacity: 0, y: -2 }}
+            exit={
+              prefersReducedMotion
+                ? undefined
+                : { opacity: 0, scaleY: 0.96, y: -10 }
+            }
             id="desktop-submenu-strip"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: -2 }}
-            transition={{ duration: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            initial={
+              prefersReducedMotion
+                ? false
+                : { opacity: 0, scaleY: 0.92, y: -14 }
+            }
+            style={{ transformOrigin: "top" }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="ml-[188px] grid h-full w-[calc(100vw-345px)] grid-cols-5 pt-2">
               <div

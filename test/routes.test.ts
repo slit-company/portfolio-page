@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { pages } from "@/content/pages";
+import {
+  getProjectCaseBySlug,
+  getProjectCasePath,
+  projectCases,
+} from "@/content/project-cases";
 import { navItems, siteRoutes } from "@/content/routes";
 
 describe("route registry", () => {
@@ -38,16 +43,44 @@ describe("route registry", () => {
     ).toContain("프로젝트 포트폴리오");
   });
 
-  it("replaces the public recruiting shell with SLIT portfolio content", () => {
+  it("replaces the public shell with SLIT portfolio content", () => {
     const allText = JSON.stringify({ navItems, pages, siteRoutes });
 
     expect(allText).toContain("SLIT");
     expect(allText).toContain("Recova");
     expect(allText).toContain("Neural Arcade");
     expect(allText).toContain("d8d / lilmgenius");
-    expect(allText).toContain("자세히 보기");
+    expect(allText).toContain("프로젝트 기록");
+    expect(allText).not.toContain("케이스 읽기");
     expect(allText).not.toMatch(
       /팀민트|TEAM MINT|team-mint|ReFit|Mix|호치민|퍼포먼스 마케터|Refresh People|people@team-mint\.io/,
     );
+  });
+
+  it("keeps explicit hiring copy inside hiring pages", () => {
+    const nonHiringPages = pages.filter(
+      (page) => page.key !== "journey" && page.key !== "careers",
+    );
+    const nonHiringText = JSON.stringify(nonHiringPages);
+
+    expect(nonHiringText).not.toMatch(
+      /채용|지원자|디자이너가 합류|초기 디자이너를 찾/,
+    );
+  });
+
+  it("builds blog-style project case paths under the portfolio page", () => {
+    expect(projectCases).toHaveLength(9);
+    expect(getProjectCasePath("recova")).toBe(
+      "/2d2db7f5-8f0a-81e9-9167-e4de7443173a/recova",
+    );
+    expect(getProjectCaseBySlug("neural-arcade-ax")?.title).toBe(
+      "Neural Arcade AX",
+    );
+
+    for (const project of projectCases) {
+      expect(project.sections.length).toBeGreaterThanOrEqual(3);
+      expect(project.summary.length).toBeGreaterThanOrEqual(2);
+      expect(project.results.length).toBeGreaterThanOrEqual(3);
+    }
   });
 });

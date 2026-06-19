@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DesktopNav } from "@/components/site-desktop-nav";
+import { SiteLogo } from "@/components/site-logo";
 import { MobileNav } from "@/components/site-nav";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,9 +66,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
           className="flex h-12 w-[188px] flex-none items-center pl-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(55_53_47/0.18)]"
           href={routePaths.home}
         >
-          <span className="tm-oopy-nav-font text-[19px] font-extrabold tracking-normal text-[var(--tm-text)]">
-            SLIT
-          </span>
+          <SiteLogo />
         </Link>
         <DesktopNav />
         <MobileNav />
@@ -103,7 +102,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <a href={callChatUrl} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
-                지원/문의 경로 확인하기
+                문의 경로 확인하기
               </a>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -112,12 +111,12 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
       {children}
       {showCta ? (
         <a
-          className="fixed bottom-4 left-6 right-6 z-50 flex h-12 items-center justify-center rounded-lg bg-black px-6 text-center text-base font-bold text-white shadow-[0_4px_18px_rgba(0,0,0,0.18)] no-underline md:left-1/2 md:right-auto md:w-[908px] md:-translate-x-1/2"
+          className="fixed bottom-4 left-6 right-6 z-50 flex h-12 items-center justify-center rounded-lg bg-black px-6 text-center text-[17px] font-bold text-white shadow-[0_4px_18px_rgba(0,0,0,0.18)] no-underline md:left-1/2 md:right-auto md:w-[908px] md:-translate-x-1/2"
           href={callChatUrl}
           target="_blank"
           rel="noreferrer"
         >
-          지원/문의 경로 확인하기
+          문의 경로 확인하기
         </a>
       ) : null}
       <Button

@@ -37,19 +37,23 @@ export type LinkCard = {
   readonly href: string;
 };
 
-export type ProjectDetail = {
+export type ProjectCaseSection = {
   readonly title: string;
-  readonly body: string;
+  readonly body: readonly string[];
 };
 
-export type InterviewCard = {
+export type ProjectCase = {
+  readonly slug: string;
   readonly title: string;
   readonly image: string;
+  readonly description: string;
+  readonly tags: readonly string[];
+  readonly proof: string;
+  readonly headline: string;
+  readonly summary: readonly string[];
+  readonly sections: readonly ProjectCaseSection[];
+  readonly results: readonly string[];
   readonly href?: string;
-  readonly description?: string;
-  readonly tags?: readonly string[];
-  readonly proof?: string;
-  readonly details?: readonly ProjectDetail[];
 };
 
 export type JobPosting = {
@@ -77,6 +81,6 @@ export type PageContent = {
   readonly heroImage?: string;
   readonly sections: readonly SectionBlock[];
   readonly linkCards?: readonly LinkCard[];
-  readonly interviewCards?: readonly InterviewCard[];
+  readonly projectCases?: readonly ProjectCase[];
   readonly jobs?: readonly JobGroup[];
 };

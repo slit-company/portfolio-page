@@ -6,10 +6,10 @@ const journeyProcessImage = "https://picsum.photos/seed/slit-journey/1200/226";
 export function JourneyIntro() {
   return (
     <Reveal className="mt-[63px]">
-      <h2 className="border-b border-[rgba(55,53,47,0.12)] pb-5 text-[26.25px] font-semibold leading-[1.3]">
+      <h2 className="border-b border-[rgba(55,53,47,0.12)] pb-5 text-[28px] font-semibold leading-[1.3]">
         지원하시기 전에
       </h2>
-      <div className="mt-4 space-y-3 text-[14px] leading-[1.65] md:leading-7">
+      <div className="mt-4 space-y-3 text-[15px] leading-[1.65] md:leading-7">
         <p>
           이번 합류 과정은 정해진 자리의 빈칸을 채우는 절차가 아니라, SLIT의
           프로젝트와 지원자의 포트폴리오 방향이 만나는지 확인하는 시간입니다.
@@ -64,9 +64,7 @@ const journeyDetails = [
 export function JourneyProcess() {
   return (
     <Reveal className="mt-[63px] border-t border-[rgba(55,53,47,0.12)] pt-10">
-      <h2 className="text-[26.25px] font-semibold leading-[1.3]">
-        채용 프로세스
-      </h2>
+      <h2 className="text-[28px] font-semibold leading-[1.3]">채용 프로세스</h2>
       <Image
         alt=""
         className="mt-[23px] w-full object-cover"
@@ -81,16 +79,16 @@ export function JourneyProcess() {
             className="grid gap-5 md:grid-cols-[160px_1fr]"
             key={detail.label}
           >
-            <h3 className="text-[18px] font-bold leading-7">
+            <h3 className="text-[19px] font-bold leading-7">
               {detail.label}
               <br />
               {detail.title}
             </h3>
             <div>
-              <p className="inline bg-[rgba(55,53,47,0.08)] px-1 text-[16px] font-bold">
+              <p className="inline bg-[rgba(55,53,47,0.08)] px-1 text-[17px] font-bold">
                 {detail.title}
               </p>
-              <div className="mt-2 rounded-[20px] border border-[rgba(55,53,47,0.12)] p-5 text-[15px] leading-7">
+              <div className="mt-2 rounded-[20px] border border-[rgba(55,53,47,0.12)] p-5 text-[16px] leading-7">
                 {detail.body}
               </div>
             </div>

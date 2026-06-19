@@ -6,18 +6,18 @@ export default function NotFound() {
   return (
     <SiteShell>
       <main className="min-h-[calc(100dvh-var(--nav-height))] w-full pb-32">
-        <p className="px-[14px] pt-[13px] text-[12px] leading-[14px] text-[rgb(55,53,47)]">
+        <p className="px-[14px] pt-[13px] text-[13px] leading-4 text-[rgb(55,53,47)]">
           SLIT Portfolio / 404
         </p>
         <article className="mx-auto mt-[120px] w-[calc(100%_-_48px)] max-w-[908px]">
           <h1 className="text-[40px] font-bold leading-[1.2] text-[rgb(55,53,47)]">
             404
           </h1>
-          <p className="mt-6 text-[14px] leading-[1.65] text-[rgb(55,53,47)]">
+          <p className="mt-6 text-[15px] leading-[1.65] text-[rgb(55,53,47)]">
             요청하신 페이지를 찾을 수 없습니다.
           </p>
           <Link
-            className="mt-8 inline-flex h-10 items-center rounded-lg bg-black px-4 text-[14px] font-bold text-white no-underline"
+            className="mt-8 inline-flex h-10 items-center rounded-lg bg-black px-4 text-[15px] font-bold text-white no-underline"
             href={routePaths.home}
           >
             SLIT Portfolio로 돌아가기

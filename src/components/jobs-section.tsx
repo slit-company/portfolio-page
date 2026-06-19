@@ -6,14 +6,14 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
     <div className="space-y-[107px]">
       {groups.map((group) => (
         <Reveal key={group.office}>
-          <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[26.25px] font-semibold leading-[1.3]">
+          <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[28px] font-semibold leading-[1.3]">
             {group.office}
           </h2>
-          <h3 className="mt-7 text-[18px] font-bold leading-[1.45]">
+          <h3 className="mt-7 text-[19px] font-bold leading-[1.45]">
             {group.role}
           </h3>
           <div className="overflow-hidden">
-            <div className="hidden border-b border-[rgba(55,53,47,0.12)] py-1.5 text-sm text-[rgba(55,53,47,0.55)] md:grid md:grid-cols-[360px_116px_116px]">
+            <div className="hidden border-b border-[rgba(55,53,47,0.12)] py-1.5 text-[15px] text-[rgba(55,53,47,0.55)] md:grid md:grid-cols-[360px_116px_116px]">
               <span>채용 중인 포지션</span>
               <span>구분</span>
               <span>경험</span>
@@ -21,7 +21,7 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
             <div className="hidden md:block">
               {group.jobs.map((job) => (
                 <a
-                  className="grid grid-cols-[360px_116px_116px] border-b border-[rgba(55,53,47,0.12)] py-1.5 text-[14px] leading-[1.35] text-inherit no-underline hover:bg-[rgba(55,53,47,0.04)]"
+                  className="grid grid-cols-[360px_116px_116px] border-b border-[rgba(55,53,47,0.12)] py-1.5 text-[15px] leading-[1.35] text-inherit no-underline hover:bg-[rgba(55,53,47,0.04)]"
                   href={job.href}
                   key={job.title}
                   rel="noreferrer"
@@ -55,7 +55,7 @@ export function Jobs({ groups }: { readonly groups: readonly JobGroup[] }) {
                   <p className="font-bold leading-6 underline decoration-[rgba(55,53,47,0.25)] underline-offset-2">
                     {job.title}
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2 text-sm">
+                  <div className="mt-3 flex flex-wrap gap-2 text-[15px]">
                     {[
                       job.employment,
                       job.experience,

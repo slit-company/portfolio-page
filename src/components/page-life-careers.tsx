@@ -16,14 +16,14 @@ export function LifePage({ page }: { readonly page: PageContent }) {
       <PageTitle>{page.title}</PageTitle>
       {headline ? (
         <Reveal className="mt-[34px]">
-          <h2 className="whitespace-pre-line break-keep text-[30px] font-semibold leading-[1.3] text-[rgb(55,53,47)]">
+          <h2 className="whitespace-pre-line break-keep text-[32px] font-semibold leading-[1.3] text-[rgb(55,53,47)]">
             {headline}
           </h2>
         </Reveal>
       ) : null}
       {body ? (
         <Reveal className="mt-9 max-w-[500px]">
-          <p className="whitespace-pre-line text-[14px] leading-[1.65] text-[rgb(55,53,47)]">
+          <p className="whitespace-pre-line text-[15px] leading-[1.65] text-[rgb(55,53,47)]">
             {body}
           </p>
         </Reveal>
@@ -42,22 +42,22 @@ function LifeSections({ page }: { readonly page: PageContent }) {
           delay={index * 0.03}
           key={section.title}
         >
-          <h2 className="self-start whitespace-pre-line break-keep text-[24px] font-bold leading-[1.4]">
+          <h2 className="self-start whitespace-pre-line break-keep text-[26px] font-bold leading-[1.4]">
             {section.title}
           </h2>
           <div>
             {section.body?.[0] ? (
-              <p className="mb-7 text-[14px] leading-[1.55] text-[rgb(55,53,47)]">
+              <p className="mb-7 text-[15px] leading-[1.6] text-[rgb(55,53,47)]">
                 {section.body[0]}
               </p>
             ) : null}
             <div className="space-y-5">
               {section.columns?.map((column) => (
                 <div key={column.title}>
-                  <h3 className="text-[16px] font-bold leading-[1.5]">
+                  <h3 className="text-[17px] font-bold leading-[1.5]">
                     {column.title}
                   </h3>
-                  <p className="mt-2 text-[14px] leading-[1.55] text-[rgba(55,53,47,0.78)]">
+                  <p className="mt-2 text-[15px] leading-[1.6] text-[rgba(55,53,47,0.78)]">
                     {column.body}
                   </p>
                 </div>
@@ -102,10 +102,10 @@ function CareersDetails({ page }: { readonly page: PageContent }) {
     <>
       {process?.items ? (
         <Reveal className="mt-[132px]">
-          <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[18px] font-bold leading-[1.45]">
+          <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[19px] font-bold leading-[1.45]">
             {process.title}
           </h2>
-          <div className="grid gap-6 pt-9 text-[14px] leading-5 md:grid-cols-4">
+          <div className="grid gap-6 pt-9 text-[15px] leading-6 md:grid-cols-4">
             {process.items.map((item) => (
               <p key={item}>{item}</p>
             ))}
@@ -114,8 +114,8 @@ function CareersDetails({ page }: { readonly page: PageContent }) {
       ) : null}
       {notice?.body ? (
         <Reveal className="mt-20 rounded-[20px] bg-[rgba(55,53,47,0.06)] p-6">
-          <h2 className="text-[16px] font-bold">{notice.title}</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[14px] leading-[1.65]">
+          <h2 className="text-[17px] font-bold">{notice.title}</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-[1.65]">
             {notice.body.map((line) => (
               <li key={line}>{line}</li>
             ))}

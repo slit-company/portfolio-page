@@ -12,7 +12,7 @@ type PageFrameProps = {
 export function PageFrame({ page, home = false, children }: PageFrameProps) {
   return (
     <main className="min-h-screen w-full pb-32">
-      <p className="px-[14px] pt-[13px] text-[12px] leading-[14px] text-[rgb(55,53,47)]">
+      <p className="px-[14px] pt-[13px] text-[13px] leading-4 text-[rgb(55,53,47)]">
         {page.breadcrumb}
       </p>
       <article
@@ -39,7 +39,7 @@ export function PageTitle({
       <h1
         className={cn(
           "break-keep font-bold tracking-normal text-[rgb(55,53,47)]",
-          large ? "text-[40px] leading-[1.2]" : "text-[32px] leading-[1.2]",
+          large ? "text-[42px] leading-[1.2]" : "text-[34px] leading-[1.2]",
         )}
       >
         {children}

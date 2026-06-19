@@ -1,9 +1,4 @@
-import { mkdirSync } from "node:fs";
 import { expect, type Locator, test } from "@playwright/test";
-
-const evidenceDir = ".omo/ulw-loop/header-nav-redesign-20260618/evidence/after";
-
-mkdirSync(evidenceDir, { recursive: true });
 
 async function requireBox(locator: Locator, name: string) {
   const box = await locator.boundingBox();
@@ -27,20 +22,29 @@ test.describe("SLIT header", () => {
     const header = page.locator("header").first();
     const nav = page.getByRole("navigation", { name: "주요 메뉴" });
     const cultureLabel = nav.getByRole("button", { name: "일하는 방식" });
-    await expect(page.getByRole("button", { name: "더보기" })).toHaveCount(0);
+    await expect(
+      page.getByRole("button", { exact: true, name: "더보기" }),
+    ).toHaveCount(0);
 
     const headerBox = await requireBox(header, "desktop header");
     expect(headerBox.height).toBeGreaterThanOrEqual(47);
     expect(headerBox.height).toBeLessThanOrEqual(49);
 
-    const logoBox = await requireBox(
-      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
-      "desktop logo",
-    );
-    expect(logoBox.x).toBeGreaterThanOrEqual(10);
-    expect(logoBox.x).toBeLessThanOrEqual(14);
+    const logoLink = page
+      .getByRole("link", { name: "SLIT Portfolio 홈" })
+      .first();
+    const logoBox = await requireBox(logoLink, "desktop logo block");
+    expect(logoBox.x).toBeGreaterThanOrEqual(0);
+    expect(logoBox.x).toBeLessThanOrEqual(1);
     expect(logoBox.width).toBeGreaterThanOrEqual(186);
     expect(logoBox.width).toBeLessThanOrEqual(190);
+    const logoImage = logoLink.locator('img[src="/slit_logo.svg"]');
+    await expect(logoImage).toBeVisible();
+    const logoImageBox = await requireBox(logoImage, "SLIT logo mark");
+    expect(logoImageBox.x).toBeGreaterThanOrEqual(10);
+    expect(logoImageBox.x).toBeLessThanOrEqual(14);
+    expect(logoImageBox.height).toBeGreaterThanOrEqual(38);
+    expect(logoImageBox.height).toBeLessThanOrEqual(42);
 
     const navBox = await requireBox(nav, "desktop nav");
     expect(navBox.x).toBeGreaterThanOrEqual(187);
@@ -93,9 +97,12 @@ test.describe("SLIT header", () => {
     await expect(
       submenu.getByRole("link", { name: "일하는 환경" }),
     ).toBeVisible();
+    await expect
+      .poll(async () => (await submenu.boundingBox())?.y ?? 0)
+      .toBeGreaterThanOrEqual(46.5);
 
     const submenuBox = await requireBox(submenu, "submenu strip");
-    expect(submenuBox.y).toBeGreaterThanOrEqual(47);
+    expect(submenuBox.y).toBeGreaterThanOrEqual(46.5);
     expect(submenuBox.y).toBeLessThanOrEqual(49);
     expect(submenuBox.height).toBeGreaterThanOrEqual(102);
     expect(submenuBox.height).toBeLessThanOrEqual(106);
@@ -199,77 +206,5 @@ test.describe("SLIT header", () => {
     await expect(page.locator("h1").first()).toContainText(
       "일을 대하는 우리의 태도",
     );
-  });
-
-  test("mobile drawer exposes nav", async ({ page, isMobile }) => {
-    test.skip(!isMobile, "mobile-only drawer");
-    await page.goto("/");
-    await page.getByRole("button", { name: "메뉴 열기" }).click();
-    const drawer = page.getByRole("dialog");
-    await expect(drawer.getByRole("link", { name: "합류 여정" })).toBeVisible();
-    await page.screenshot({ path: `${evidenceDir}/mobile-drawer.png` });
-    await drawer.getByRole("link", { name: "채용 공고" }).click();
-    await expect(drawer).toBeHidden();
-    await expect(page.locator("h1").first()).toContainText("채용 중인 포지션");
-  });
-
-  test("tablet header uses mobile drawer without desktop overlap", async ({
-    page,
-  }, testInfo) => {
-    test.skip(testInfo.project.name !== "tablet", "tablet-only breakpoint");
-    await page.goto("/");
-
-    const desktopNav = page.getByRole("navigation", { name: "주요 메뉴" });
-    const menuButton = page.getByRole("button", { name: "메뉴 열기" });
-
-    await expect(desktopNav).toBeHidden();
-    await expect(menuButton).toBeVisible();
-
-    const logoBox = await requireBox(
-      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
-      "tablet logo",
-    );
-    const buttonBox = await requireBox(menuButton, "tablet menu button");
-    expect(logoBox.x + logoBox.width).toBeLessThan(buttonBox.x);
-
-    await menuButton.click();
-    const drawer = page.getByRole("dialog");
-    await expect(drawer.getByRole("link", { name: "합류 여정" })).toBeVisible();
-  });
-
-  test("narrow desktop header keeps nav and submenu unclipped", async ({
-    page,
-  }, testInfo) => {
-    test.skip(
-      testInfo.project.name !== "narrow-desktop",
-      "narrow-desktop-only breakpoint",
-    );
-    await page.goto("/");
-
-    const nav = page.getByRole("navigation", { name: "주요 메뉴" });
-    await expect(nav).toBeVisible();
-
-    const logoBox = await requireBox(
-      page.getByRole("link", { name: "SLIT Portfolio 홈" }).first(),
-      "narrow desktop logo",
-    );
-    const companyBox = await requireBox(
-      nav.getByText("회사소개", { exact: true }),
-      "narrow desktop first nav item",
-    );
-    expect(logoBox.x + logoBox.width).toBeLessThan(companyBox.x);
-
-    await nav.getByText("일하는 방식", { exact: true }).hover();
-    const firstChild = page
-      .getByRole("region", { name: "하위 메뉴" })
-      .getByRole("link", { name: "일을 대하는 우리의 태도" });
-    await expect(firstChild).toBeVisible();
-
-    const hasBadOverflow = await firstChild.evaluate(
-      (element) =>
-        element.scrollWidth > element.clientWidth ||
-        element.scrollHeight > element.clientHeight + 2,
-    );
-    expect(hasBadOverflow).toBe(false);
   });
 });

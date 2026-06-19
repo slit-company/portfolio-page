@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-describe("recruit visual tokens", () => {
+describe("portfolio visual tokens", () => {
   it("defines page geometry, font, and reference colors", () => {
     const css = readFileSync("src/app/globals.css", "utf8");
     const layout = readFileSync("src/app/layout.tsx", "utf8");

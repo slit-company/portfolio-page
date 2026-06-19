@@ -6,12 +6,12 @@ const permanentBetaImage = "https://picsum.photos/seed/slit-culture/640/884";
 export function CultureLead() {
   return (
     <Reveal className="mt-[35px]">
-      <h2 className="break-keep border-b border-[rgba(55,53,47,0.12)] pb-5 text-[30px] font-semibold leading-[1.3]">
+      <h2 className="break-keep border-b border-[rgba(55,53,47,0.12)] pb-5 text-[32px] font-semibold leading-[1.3]">
         우리는 좁고 어려운 도메인을
         <br />
         끝까지 파고듭니다.
       </h2>
-      <div className="mt-4 space-y-9 text-[15px] leading-7 text-[rgb(55,53,47)]">
+      <div className="mt-4 space-y-9 text-[16px] leading-7 text-[rgb(55,53,47)]">
         <p>
           SLIT에서 일한다는 것은 쉬운 설명보다 실제 문제가 먼저인 프로젝트를
           다룬다는 뜻입니다.
@@ -34,14 +34,14 @@ export function CultureLead() {
 export function CulturePermanentBeta() {
   return (
     <Reveal className="mt-[95px] border-t border-[rgba(55,53,47,0.12)] pt-10">
-      <h2 className="text-[30px] font-semibold leading-[1.3]">
+      <h2 className="text-[32px] font-semibold leading-[1.3]">
         SLIT이 지키려는 기준
       </h2>
       <div className="mt-10">
-        <h3 className="text-[24px] font-semibold leading-[1.3]">
+        <h3 className="text-[26px] font-semibold leading-[1.3]">
           Evidence First
         </h3>
-        <p className="mt-3 text-[15px] italic leading-7 text-[rgba(55,53,47,0.68)]">
+        <p className="mt-3 text-[16px] italic leading-7 text-[rgba(55,53,47,0.68)]">
           주장보다 증거를 먼저 만들고, 증거가 쌓이면 더 선명한 이야기로
           정리합니다
         </p>
@@ -54,7 +54,7 @@ export function CulturePermanentBeta() {
             unoptimized
             width={323}
           />
-          <div className="space-y-4 text-[16px] leading-7">
+          <div className="space-y-4 text-[17px] leading-7">
             <p>
               <strong>
                 SLIT의 성과는 수상 이름이나 프로젝트명만으로 완성되지 않습니다.
@@ -64,12 +64,12 @@ export function CulturePermanentBeta() {
             </p>
             <p>
               그래서 우리는 결과물만 남기지 않고 과정도 함께 남기려 합니다.
-              디자이너에게도 이 지점이 중요합니다. 포트폴리오는 예쁜 화면보다
-              문제를 어떻게 다르게 풀었는지를 보여줄 때 강해집니다.
+              포트폴리오는 예쁜 화면보다 문제를 어떻게 다르게 풀었는지를 보여줄
+              때 강해집니다.
             </p>
             <p>
-              지금 필요한 사람은 이 증거들을 브랜드, 웹, 덱, 콘텐츠로 바꿔
-              회사와 본인의 포트폴리오를 함께 키울 사람입니다.
+              지금 필요한 것은 이 증거들을 브랜드, 웹, 덱, 콘텐츠로 바꿔 회사
+              포트폴리오의 밀도를 높이는 일입니다.
             </p>
           </div>
         </div>

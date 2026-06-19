@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type AnchorHTMLAttributes, forwardRef } from "react";
+import { SiteLogo } from "@/components/site-logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -33,8 +34,8 @@ const NavAnchor = forwardRef<HTMLAnchorElement, NavAnchorProps>(
     const anchorClassName = cn(
       "font-bold no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(32_120_220/0.22)]",
       mobile
-        ? "flex min-h-11 items-center border-l-2 border-transparent px-5 text-[15px] leading-6"
-        : "text-[16px]",
+        ? "flex min-h-11 items-center border-l-2 border-transparent px-5 text-[16px] leading-6"
+        : "text-[17px]",
       mobile && current
         ? "border-[var(--tm-text)] bg-[var(--tm-nav-active-bg)] text-[var(--tm-text)]"
         : undefined,
@@ -51,8 +52,8 @@ const NavAnchor = forwardRef<HTMLAnchorElement, NavAnchorProps>(
           className={cn(
             "font-bold",
             mobile
-              ? "flex min-h-11 items-center px-5 text-[15px] leading-6"
-              : "text-[16px]",
+              ? "flex min-h-11 items-center px-5 text-[16px] leading-6"
+              : "text-[17px]",
           )}
         >
           {item.label}
@@ -125,9 +126,7 @@ export function MobileNav() {
         >
           <SheetHeader className="h-12 justify-center border-b border-[rgb(55_53_47/0.09)] px-4 py-0">
             <SheetTitle>
-              <span className="tm-oopy-nav-font text-[20px] font-extrabold tracking-normal">
-                SLIT
-              </span>
+              <SiteLogo imageClassName="h-8" />
             </SheetTitle>
             <SheetClose asChild>
               <Button
@@ -148,14 +147,14 @@ export function MobileNav() {
               >
                 {item.children ? (
                   <div>
-                    <p className="px-5 py-3 text-[15px] font-bold leading-6 text-[var(--tm-text)]">
+                    <p className="px-5 py-3 text-[16px] font-bold leading-6 text-[var(--tm-text)]">
                       {item.label}
                     </p>
                     <div className="pb-1">
                       {item.children.map((child) => (
                         <SheetClose asChild key={child.label}>
                           <NavAnchor
-                            className="min-h-10 pl-8 text-[14px] font-medium"
+                            className="min-h-10 pl-8 text-[15px] font-medium"
                             current={isInternalCurrent(child, pathname)}
                             item={child}
                             mobile

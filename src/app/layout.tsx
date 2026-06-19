@@ -15,8 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SLIT Portfolio",
-  description:
-    "Recova와 SLIT 프로젝트 실적을 정리한 회사 포트폴리오형 채용 페이지입니다.",
+  description: "Recova와 SLIT 프로젝트 실적을 정리한 회사 포트폴리오입니다.",
 };
 
 export default function RootLayout({

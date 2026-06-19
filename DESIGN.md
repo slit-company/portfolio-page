@@ -1,8 +1,8 @@
-# Team Mint Recruit Design System
+# SLIT Portfolio Design System
 
 ## 1. Atmosphere & Identity
 
-This build keeps the original recruiting content and document-like reading rhythm. The header follows the provided reference screenshot: a flat 48px white bar, fixed logo block on the left, five evenly distributed navigation columns across the middle, and a compact more icon on the right.
+This build keeps the original document-like reading rhythm while presenting SLIT as a company portfolio first. The header follows the provided reference screenshot: a flat 48px white bar, fixed logo block on the left, five evenly distributed navigation columns across the middle, and a compact more icon on the right.
 
 ## 2. Color
 
@@ -35,13 +35,14 @@ This build keeps the original recruiting content and document-like reading rhyth
 
 | Level | Size | Weight | Line Height | Tracking | Usage |
 |-------|------|--------|-------------|----------|-------|
-| Page title | 30px | 700 | 1.3 | 0 | Nav-linked page title |
-| Notion H1 | 28px | 700 | 1.35 | 0 | Main Korean statement |
-| Notion H2 | 24px | 700 | 1.4 | 0 | Section headers |
-| Body | 14px | 400 | 1.65 | 0 | Paragraphs and tables |
-| Body strong | 14px | 700 | 1.65 | 0 | Inline emphasis |
-| Nav | 16px | 700 | 48px | 0 | Top navigation |
-| Breadcrumb | 12px | 400 | 24px | 0 | Oopy title path |
+| Page title | 34px | 700 | 1.2 | 0 | Nav-linked page title |
+| Large page title | 42px | 700 | 1.2 | 0 | Company/about hero title |
+| Notion H1 | 30px | 700 | 1.32 | 0 | Main Korean statement |
+| Notion H2 | 26-28px | 700 | 1.3-1.4 | 0 | Section headers |
+| Body | 15px | 400 | 1.6-1.65 | 0 | Paragraphs and tables |
+| Body strong | 15-16px | 700 | 1.6-1.65 | 0 | Inline emphasis |
+| Nav | 17px | 700 | 48px | 0 | Top navigation |
+| Breadcrumb | 13px | 400 | 16px | 0 | Oopy title path |
 
 ### Font Stack
 
@@ -89,12 +90,12 @@ All spacing derives from a base of 4px.
 
 ### Site Header
 
-- Structure: sticky flat header, 188px logo block, five equal desktop nav columns, 48px more menu trigger, mobile drawer below 800px.
-- Spacing: 48px height, no horizontal page padding on the header shell; logo image starts 12px from the viewport.
-- States: resting nav text is black and bold; hover/focus remains quiet with no pill, no rounded rail, and no glass surface.
+- Structure: sticky flat header, 188px logo block with the supplied SL:IT SVG mark, five equal desktop nav columns, 48px more menu trigger, mobile drawer below 800px.
+- Spacing: 48px height, no horizontal page padding on the header shell; logo image starts 12px from the viewport and stays within the header height.
+- States: resting nav text is black and bold; hover/focus draws a 2px bottom line directly under the text label with no pill, no rounded rail, and no glass surface.
 - Panel: child pages open in a flat white strip directly below the header, aligned to the active nav column.
 - More menu: opens a compact flat white action list aligned to the right edge, using the same divider-first surface language as the header.
-- Motion: opacity and translate only, 140-160ms standard easing.
+- Motion: opacity, translate, and scaleY only, 200ms standard easing for submenu entry.
 
 ### Notion Content Column
 
@@ -102,6 +103,13 @@ All spacing derives from a base of 4px.
 - Spacing: page title starts at roughly y=207px on desktop nav pages; home hero starts at y=99px.
 - States: links underline on hover; cards lift subtly only where the original has cards.
 - Accessibility: semantic headings, links, tables/lists, and alt text for meaningful images.
+
+### Project Case Pages
+
+- Structure: portfolio listing cards link to static project case articles under the portfolio route.
+- Listing cards: image, small category label, title, short excerpt, tags, and proof line. The full card is the link affordance; do not add a repeated CTA line at the bottom.
+- Article pages: breadcrumb, back link, large title, headline, hero media, proof callout, long sectioned body, result tiles, optional external source link.
+- Tone: reads as company portfolio and customer-facing case study, not as an explicit hiring page.
 
 ### Bottom CTA
 
@@ -116,7 +124,7 @@ All spacing derives from a base of 4px.
 | Type | Duration | Easing | Usage |
 |------|----------|--------|-------|
 | Micro | 120ms | ease-out | Button and link hover |
-| Standard | 160ms | cubic-bezier(0.22, 1, 0.36, 1) | Navbar underline and dropdown |
+| Standard | 200ms | cubic-bezier(0.22, 1, 0.36, 1) | Navbar dropdown |
 | Reveal | 460ms | cubic-bezier(0.22, 1, 0.36, 1) | Subtle content entry |
 
 ### Rules

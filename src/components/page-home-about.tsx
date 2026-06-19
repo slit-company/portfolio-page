@@ -31,7 +31,7 @@ export function HomePage({ page }: { readonly page: PageContent }) {
         </Reveal>
       ) : null}
       <Reveal>
-        <h1 className="max-w-[812px] whitespace-pre-line break-keep text-[23px] font-semibold leading-[1.38] tracking-normal text-[rgb(55,53,47)] md:text-[26.25px] md:leading-[1.3]">
+        <h1 className="max-w-[812px] whitespace-pre-line break-keep text-[25px] font-semibold leading-[1.34] tracking-normal text-[rgb(55,53,47)] md:text-[29px] md:leading-[1.28]">
           {heading}
         </h1>
       </Reveal>
@@ -72,14 +72,14 @@ export function AboutPage({ page }: { readonly page: PageContent }) {
       <PageTitle large>{page.title}</PageTitle>
       {eyebrow ? (
         <Reveal className="mt-6">
-          <p className="text-[20px] font-bold leading-[1.2] text-[rgba(55,53,47,0.62)]">
+          <p className="text-[21px] font-bold leading-[1.2] text-[rgba(55,53,47,0.62)]">
             {eyebrow}
           </p>
         </Reveal>
       ) : null}
       {statement ? (
         <Reveal className="mt-8">
-          <h2 className="whitespace-pre-line break-keep text-[30px] font-semibold leading-[1.3] text-[rgb(55,53,47)]">
+          <h2 className="whitespace-pre-line break-keep text-[32px] font-semibold leading-[1.3] text-[rgb(55,53,47)]">
             {statement}
           </h2>
         </Reveal>
