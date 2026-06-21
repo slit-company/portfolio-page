@@ -42,14 +42,23 @@ export type ProjectCaseSection = {
   readonly body: readonly string[];
 };
 
+export type ProjectCaseTier = "flagship" | "major" | "expanding";
+
+export type ProjectSummaryBox = {
+  readonly label: string;
+  readonly value: string;
+  readonly description: string;
+};
+
 export type ProjectCase = {
   readonly slug: string;
   readonly title: string;
-  readonly image: string;
+  readonly tier: ProjectCaseTier;
   readonly description: string;
   readonly tags: readonly string[];
   readonly proof: string;
   readonly headline: string;
+  readonly summaryBoxes: readonly ProjectSummaryBox[];
   readonly summary: readonly string[];
   readonly sections: readonly ProjectCaseSection[];
   readonly results: readonly string[];
@@ -78,7 +87,6 @@ export type PageContent = {
   readonly breadcrumb: string;
   readonly intro?: readonly string[];
   readonly stats?: readonly StatItem[];
-  readonly heroImage?: string;
   readonly sections: readonly SectionBlock[];
   readonly linkCards?: readonly LinkCard[];
   readonly projectCases?: readonly ProjectCase[];

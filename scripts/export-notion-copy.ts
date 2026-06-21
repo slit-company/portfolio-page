@@ -103,9 +103,6 @@ function writePage(page: PageContent) {
   bullet(`key: ${page.key}`);
   bullet(`path: ${page.path}`);
   bullet(`breadcrumb: ${page.breadcrumb}`);
-  if (page.heroImage) {
-    bullet(`heroImage: ${page.heroImage}`);
-  }
   line();
 
   if (page.intro?.length) {
@@ -126,7 +123,7 @@ function writeProject(project: ProjectCase) {
   line(`# ${project.title}`);
   line();
   bullet(`slug: ${project.slug}`);
-  bullet(`image: ${project.image}`);
+  bullet(`tier: ${project.tier}`);
   bullet(`tags: ${project.tags.join(", ")}`);
   bullet(`proof: ${project.proof}`);
   if (project.href) {

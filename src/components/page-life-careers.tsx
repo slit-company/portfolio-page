@@ -1,11 +1,8 @@
-import Image from "next/image";
 import { Jobs } from "@/components/jobs-section";
 import { PageFrame, PageTitle } from "@/components/page-doc-layout";
 import { Reveal } from "@/components/reveal";
+import { ProcessSystemMock } from "@/components/workflow-system-ui";
 import type { PageContent } from "@/content/types";
-
-const lifeFirstSectionImage =
-  "https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa19d011b-0748-4d00-95d1-bd312c8de398%2Fef800f2e-d790-4bc5-8f99-a6193b1d07a5%2F%25EC%25B1%2584%25EC%259A%25A9%25ED%2599%2588%25ED%258E%2598%25EC%259D%25B4%25EC%25A7%2580_%25EC%2582%25AC%25EC%25A7%2584_v02_2_%25EC%2582%25AC%25EB%2582%25B4_%25EC%25B9%25B4%25ED%258E%2598%25EC%2599%2580_%25EB%258F%2584%25EC%2584%259C%25EA%25B4%2580.png&blockId=33cdb7f5-8f0a-8024-8b15-ec48ee5048ce";
 
 export function LifePage({ page }: { readonly page: PageContent }) {
   const headline = page.intro?.[0];
@@ -22,12 +19,13 @@ export function LifePage({ page }: { readonly page: PageContent }) {
         </Reveal>
       ) : null}
       {body ? (
-        <Reveal className="mt-9 max-w-[500px]">
-          <p className="whitespace-pre-line text-[15px] leading-[1.65] text-[rgb(55,53,47)]">
+        <Reveal className="mt-9 max-w-[720px]">
+          <p className="whitespace-pre-line break-keep text-[16px] leading-8 text-[rgb(55,53,47)]">
             {body}
           </p>
         </Reveal>
       ) : null}
+      <ProcessSystemMock />
       <LifeSections page={page} />
     </PageFrame>
   );
@@ -47,7 +45,7 @@ function LifeSections({ page }: { readonly page: PageContent }) {
           </h2>
           <div>
             {section.body?.[0] ? (
-              <p className="mb-7 text-[15px] leading-[1.6] text-[rgb(55,53,47)]">
+              <p className="mb-7 break-keep text-[16px] leading-8 text-[rgb(55,53,47)]">
                 {section.body[0]}
               </p>
             ) : null}
@@ -57,22 +55,12 @@ function LifeSections({ page }: { readonly page: PageContent }) {
                   <h3 className="text-[17px] font-bold leading-[1.5]">
                     {column.title}
                   </h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-[rgba(55,53,47,0.78)]">
+                  <p className="mt-2 break-keep text-[15px] leading-7 text-[rgba(55,53,47,0.78)]">
                     {column.body}
                   </p>
                 </div>
               ))}
             </div>
-            {index === 0 ? (
-              <Image
-                alt=""
-                className="mt-5 w-full object-cover"
-                height={455}
-                src={lifeFirstSectionImage}
-                unoptimized
-                width={647}
-              />
-            ) : null}
           </div>
         </Reveal>
       ))}

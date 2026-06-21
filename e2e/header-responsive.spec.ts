@@ -22,11 +22,11 @@ test.describe("SLIT responsive header", () => {
     await page.keyboard.press("Enter");
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByRole("link", { name: "합류 여정" })).toBeVisible();
+    await expect(drawer.getByText("적용 분야", { exact: true })).toBeVisible();
     await page.screenshot({ path: `${evidenceDir}/mobile-drawer.png` });
-    await drawer.getByRole("link", { name: "채용 공고" }).click();
+    await drawer.getByRole("link", { name: "문의하기" }).click();
     await expect(drawer).toBeHidden();
-    await expect(page.locator("h1").first()).toContainText("채용 중인 포지션");
+    await expect(page.locator("main").first()).toContainText("SLIT");
   });
 
   test("tablet header uses mobile drawer without desktop overlap", async ({
@@ -52,7 +52,7 @@ test.describe("SLIT responsive header", () => {
     await page.keyboard.press("Enter");
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByRole("link", { name: "합류 여정" })).toBeVisible();
+    await expect(drawer.getByText("적용 분야", { exact: true })).toBeVisible();
   });
 
   test("narrow desktop header keeps nav and submenu unclipped", async ({
@@ -72,7 +72,7 @@ test.describe("SLIT responsive header", () => {
       "narrow desktop logo",
     );
     const companyBox = await requireBox(
-      nav.getByText("회사소개", { exact: true }),
+      nav.getByText("SLIT 소개", { exact: true }),
       "narrow desktop first nav item",
     );
     expect(logoBox.x + logoBox.width).toBeLessThan(companyBox.x);
@@ -80,7 +80,7 @@ test.describe("SLIT responsive header", () => {
     await nav.getByText("일하는 방식", { exact: true }).hover();
     const firstChild = page
       .getByRole("region", { name: "하위 메뉴" })
-      .getByRole("link", { name: "일을 대하는 우리의 태도" });
+      .getByRole("link", { name: "프로젝트 원칙" });
     await expect(firstChild).toBeVisible();
 
     const hasBadOverflow = await firstChild.evaluate(

@@ -90,19 +90,19 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <Link href={routePaths.home}>
                 <Home className="size-4" />
-                SLIT Portfolio
+                SLIT
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <Link href={routePaths.interviews}>
                 <BriefcaseBusiness className="size-4" />
-                프로젝트 포트폴리오
+                프로젝트 사례
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
               <a href={callChatUrl} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
-                문의 경로 확인하기
+                문의하기
               </a>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -116,7 +116,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
           target="_blank"
           rel="noreferrer"
         >
-          문의 경로 확인하기
+          문의하기
         </a>
       ) : null}
       <Button

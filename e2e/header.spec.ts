@@ -21,7 +21,7 @@ test.describe("SLIT header", () => {
     await page.goto("/");
     const header = page.locator("header").first();
     const nav = page.getByRole("navigation", { name: "주요 메뉴" });
-    const cultureLabel = nav.getByRole("button", { name: "일하는 방식" });
+    const workLabel = nav.getByRole("button", { name: "일하는 방식" });
     await expect(
       page.getByRole("button", { exact: true, name: "더보기" }),
     ).toHaveCount(0);
@@ -53,11 +53,11 @@ test.describe("SLIT header", () => {
     expect(navBox.width).toBeLessThanOrEqual(1100);
 
     const labels = [
-      "회사소개",
+      "SLIT 소개",
+      "프로젝트 사례",
       "일하는 방식",
-      "프로젝트",
-      "합류 여정",
-      "채용 공고",
+      "적용 분야",
+      "문의하기",
     ];
     const centers: number[] = [];
     for (const label of labels) {
@@ -82,20 +82,20 @@ test.describe("SLIT header", () => {
     }
 
     await expect(page.getByRole("region", { name: "하위 메뉴" })).toBeHidden();
-    await cultureLabel.hover();
+    await workLabel.hover();
 
     const submenu = page.getByRole("region", { name: "하위 메뉴" });
     await expect(submenu).toBeVisible();
-    await expect(cultureLabel).toHaveCSS("color", "rgb(55, 53, 47)");
-    const cultureRadius = await cultureLabel.evaluate((element) =>
+    await expect(workLabel).toHaveCSS("color", "rgb(55, 53, 47)");
+    const cultureRadius = await workLabel.evaluate((element) =>
       Number.parseFloat(getComputedStyle(element).borderTopLeftRadius),
     );
     expect(cultureRadius).toBe(0);
     await expect(
-      submenu.getByRole("link", { name: "일을 대하는 우리의 태도" }),
+      submenu.getByRole("link", { name: "프로젝트 원칙" }),
     ).toBeVisible();
     await expect(
-      submenu.getByRole("link", { name: "일하는 환경" }),
+      submenu.getByRole("link", { name: "운영 시스템 구축 방식" }),
     ).toBeVisible();
     await expect
       .poll(async () => (await submenu.boundingBox())?.y ?? 0)
@@ -107,27 +107,7 @@ test.describe("SLIT header", () => {
     expect(submenuBox.height).toBeGreaterThanOrEqual(102);
     expect(submenuBox.height).toBeLessThanOrEqual(106);
 
-    const cultureChild = submenu.getByRole("link", {
-      name: "일을 대하는 우리의 태도",
-    });
-    await cultureChild.hover();
-    await expect(cultureChild).toHaveCSS(
-      "background-color",
-      "rgb(245, 245, 245)",
-    );
-
-    await nav.getByRole("button", { name: "프로젝트" }).hover();
-    await expect(
-      submenu.getByRole("link", { name: "프로젝트 포트폴리오" }),
-    ).toBeVisible();
-    await expect(
-      submenu.getByRole("link", { name: "Recova와 실적" }),
-    ).toBeVisible();
-
-    await nav.getByRole("link", { name: "합류 여정" }).hover();
-    await expect(submenu).toBeHidden();
-
-    await nav.getByRole("link", { name: "채용 공고" }).hover();
+    await nav.getByRole("link", { name: "문의하기" }).hover();
     await expect(submenu).toBeHidden();
   });
 
@@ -141,7 +121,7 @@ test.describe("SLIT header", () => {
     );
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "주요 메뉴" });
-    const cultureLabel = nav.getByRole("button", { name: "일하는 방식" });
+    const workLabel = nav.getByRole("button", { name: "일하는 방식" });
     const submenu = page.getByRole("region", { name: "하위 메뉴" });
 
     await page.keyboard.press("Tab");
@@ -149,12 +129,17 @@ test.describe("SLIT header", () => {
       page.getByRole("link", { name: "SLIT Portfolio 홈" }),
     ).toBeFocused();
     await page.keyboard.press("Tab");
-    await expect(nav.getByRole("link", { name: "회사소개" })).toBeFocused();
+    await expect(nav.getByRole("link", { name: "SLIT 소개" })).toBeFocused();
     await page.keyboard.press("Tab");
-    await expect(cultureLabel).toBeFocused();
+    await expect(
+      nav.getByRole("button", { name: "프로젝트 사례" }),
+    ).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(workLabel).toBeFocused();
+    await workLabel.hover();
     await expect(submenu).toBeVisible();
     const firstChild = submenu.getByRole("link", {
-      name: "일을 대하는 우리의 태도",
+      name: "프로젝트 원칙",
     });
     await expect(firstChild).toBeVisible();
     await expect(firstChild).toHaveAttribute(
@@ -193,18 +178,16 @@ test.describe("SLIT header", () => {
     await page.keyboard.press("Escape");
     await expect(submenu).toBeHidden();
 
-    const lifeLabel = nav.getByRole("button", { name: "프로젝트" });
-    await lifeLabel.hover();
+    const projectLabel = nav.getByRole("button", { name: "프로젝트 사례" });
+    await projectLabel.hover();
     await expect(submenu).toBeVisible();
     await page.mouse.move(20, 240);
     await expect(submenu).toBeHidden();
-    await expect(lifeLabel).toHaveCSS("color", "rgb(55, 53, 47)");
+    await expect(projectLabel).toHaveCSS("color", "rgb(55, 53, 47)");
 
-    await cultureLabel.press("Space");
+    await workLabel.press("Space");
     await expect(submenu).toBeVisible();
     await firstChild.click();
-    await expect(page.locator("h1").first()).toContainText(
-      "일을 대하는 우리의 태도",
-    );
+    await expect(page.locator("h1").first()).toContainText("프로젝트 원칙");
   });
 });

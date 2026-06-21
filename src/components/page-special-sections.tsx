@@ -1,7 +1,4 @@
-import Image from "next/image";
 import { Reveal } from "@/components/reveal";
-
-const journeyProcessImage = "https://picsum.photos/seed/slit-journey/1200/226";
 
 export function JourneyIntro() {
   return (
@@ -11,8 +8,7 @@ export function JourneyIntro() {
       </h2>
       <div className="mt-4 space-y-3 text-[15px] leading-[1.65] md:leading-7">
         <p>
-          이번 합류 과정은 정해진 자리의 빈칸을 채우는 절차가 아니라, SLIT의
-          프로젝트와 지원자의 포트폴리오 방향이 만나는지 확인하는 시간입니다.
+          이번 합류 과정에서는 SLIT의 프로젝트와 지원자의 포트폴리오 방향이 만나는지 확인합니다.
         </p>
         <p>
           완성된 결과물만 보지 않습니다. 왜 그렇게 만들었는지, 어떤 제약이
@@ -33,7 +29,7 @@ const journeyDetails = [
   {
     label: "Step1.",
     title: "포트폴리오 공유",
-    body: "완성 결과물뿐 아니라 과정과 판단 근거가 보이는 자료를 공유합니다.",
+    body: "완성 결과물과 과정, 판단 근거가 보이는 자료를 공유합니다.",
   },
   {
     label: "Step2.",
@@ -65,14 +61,18 @@ export function JourneyProcess() {
   return (
     <Reveal className="mt-[63px] border-t border-[rgba(55,53,47,0.12)] pt-10">
       <h2 className="text-[28px] font-semibold leading-[1.3]">채용 프로세스</h2>
-      <Image
-        alt=""
-        className="mt-[23px] w-full object-cover"
-        height={171}
-        src={journeyProcessImage}
-        unoptimized
-        width={908}
-      />
+      <div className="mt-[23px] grid gap-2 rounded-[18px] border border-[var(--tm-border)] bg-[var(--tm-soft)] p-4 md:grid-cols-5">
+        {journeyDetails.map((detail) => (
+          <div className="rounded-[12px] bg-white p-3" key={detail.label}>
+            <p className="text-[13px] font-bold leading-5 text-[var(--tm-faint)]">
+              {detail.label}
+            </p>
+            <p className="mt-1 break-keep text-[14px] font-bold leading-5 text-[var(--tm-text)]">
+              {detail.title}
+            </p>
+          </div>
+        ))}
+      </div>
       <div className="mt-16 space-y-8">
         {journeyDetails.map((detail) => (
           <div

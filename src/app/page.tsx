@@ -10,7 +10,7 @@ export default function Home() {
   }
 
   return (
-    <SiteShell showCta>
+    <SiteShell>
       <PageRenderer page={page} />
     </SiteShell>
   );

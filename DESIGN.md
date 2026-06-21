@@ -2,7 +2,7 @@
 
 ## 1. Atmosphere & Identity
 
-This build keeps the original document-like reading rhythm while presenting SLIT as a company portfolio first. The header follows the provided reference screenshot: a flat 48px white bar, fixed logo block on the left, five evenly distributed navigation columns across the middle, and a compact more icon on the right.
+This build keeps the original document-like reading rhythm while presenting SLIT as a company introduction page for customers, partners, and people considering working with the team. The header follows the provided reference screenshot: a flat 48px white bar, fixed logo block on the left, five evenly distributed Korean navigation columns across the middle, and a compact more icon on the right.
 
 ## 2. Color
 
@@ -22,6 +22,7 @@ This build keeps the original document-like reading rhythm while presenting SLIT
 | Border/subtle | --tm-border | rgba(55, 53, 47, 0.13) | rgba(245, 245, 245, 0.18) | Notion dividers and tables |
 | Accent/nav | --tm-nav-accent | rgb(102, 157, 253) | rgb(102, 157, 253) | Optional nav focus accent |
 | Accent/mint | --tm-mint | rgb(154, 226, 196) | rgb(154, 226, 196) | Brand highlights and progress |
+| Accent/amber | --tm-amber | rgb(210, 159, 62) | rgb(210, 159, 62) | Workflow status markers |
 
 ### Rules
 
@@ -77,6 +78,7 @@ All spacing derives from a base of 4px.
 
 - Max shell width: 1100px.
 - Content column: 908px, centered inside the shell.
+- Wide content column: 1040px, reserved for home hero and workflow/system UI surfaces.
 - Header height: 48px.
 - Desktop content left edge at 266px on a 1440px viewport.
 - Mobile content margin: 24px.
@@ -107,9 +109,17 @@ All spacing derives from a base of 4px.
 ### Project Case Pages
 
 - Structure: portfolio listing cards link to static project case articles under the portfolio route.
-- Listing cards: image, small category label, title, short excerpt, tags, and proof line. The full card is the link affordance; do not add a repeated CTA line at the bottom.
-- Article pages: breadcrumb, back link, large title, headline, hero media, proof callout, long sectioned body, result tiles, optional external source link.
+- Listing cards: code-rendered workflow/system preview, hierarchy label, title, short excerpt, tags, and proof line. The full card is the link affordance; do not add a repeated CTA line at the bottom.
+- Article pages: breadcrumb, back link, large title, headline, project summary boxes, code-rendered system preview, proof callout, long sectioned body, result tiles, optional external source link.
 - Tone: reads as company portfolio and customer-facing case study, not as an explicit hiring page.
+
+### Workflow/System UI Mock
+
+- Structure: static product-like panels that show workflow intake, AI Agent suggestions, 담당자 판단, 사람 검토, PoC evidence, and 운영 시스템 status in one readable surface.
+- Markers: use A/B/C square markers for workflow phases. They should feel like system annotations, not decorative badges.
+- Surfaces: white and soft blocks dominate; dark fills are limited to small console/header areas inside the mock.
+- Text: Korean labels stay readable at mobile sizes; no tiny lorem-style filler or random chart noise.
+- Motion: static by default; hover/focus may shift border tone only.
 
 ### Bottom CTA
 

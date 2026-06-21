@@ -17,8 +17,10 @@ export function PageFrame({ page, home = false, children }: PageFrameProps) {
       </p>
       <article
         className={cn(
-          "mx-auto w-[calc(100%_-_48px)] max-w-[908px]",
-          home ? "mt-[22px]" : "mt-[120px]",
+          "mx-auto w-[calc(100%_-_48px)]",
+          home
+            ? "mt-[22px] max-w-[var(--wide-content-max-width)]"
+            : "mt-[120px] max-w-[var(--content-max-width)]",
         )}
       >
         {children}
@@ -38,7 +40,7 @@ export function PageTitle({
     <Reveal>
       <h1
         className={cn(
-          "break-keep font-bold tracking-normal text-[rgb(55,53,47)]",
+          "break-keep font-extrabold tracking-[-0.01em] text-[rgb(55,53,47)]",
           large ? "text-[42px] leading-[1.2]" : "text-[34px] leading-[1.2]",
         )}
       >

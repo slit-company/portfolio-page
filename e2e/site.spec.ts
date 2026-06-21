@@ -7,8 +7,6 @@ const routes = [
   "/2d2db7f5-8f0a-81e9-9167-e4de7443173a",
   "/2d2db7f5-8f0a-81e9-9167-e4de7443173a/recova",
   "/2d2db7f5-8f0a-8134-9535-f3e577a4dfdc",
-  "/33adb7f5-8f0a-8028-861d-e8d7fbaf52bd",
-  "/2d2db7f5-8f0a-81b7-b5b6-d7f08537b507",
 ] satisfies readonly string[];
 
 test.describe("SLIT company portfolio site", () => {

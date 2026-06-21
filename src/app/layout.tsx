@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Gothic_A1 } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const gothicA1 = Gothic_A1({
-  variable: "--font-gothic-a1",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -27,7 +21,7 @@ export default function RootLayout({
     <html
       lang="ko"
       data-scroll-behavior="smooth"
-      className={`${gothicA1.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
