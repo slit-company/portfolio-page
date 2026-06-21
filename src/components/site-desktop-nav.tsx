@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 function SubmenuAnchor({ item }: { readonly item: NavItem }) {
   const className =
-    "tm-oopy-nav-font flex min-h-10 w-full min-w-0 items-center justify-center rounded-none px-2 py-1 text-center text-[15px] font-medium leading-5 text-[var(--tm-text)] no-underline transition-colors duration-150 break-keep hover:bg-[rgb(245,245,245)] focus-visible:bg-[rgb(245,245,245)] focus-visible:outline-none";
+    "tm-oopy-nav-font flex min-h-10 items-center justify-start rounded-none py-1 pr-3 text-left text-[15px] font-medium leading-5 text-[var(--tm-text)] no-underline transition-colors duration-150 break-keep hover:bg-[rgb(245,245,245)] focus-visible:bg-[rgb(245,245,245)] focus-visible:outline-none";
 
   if (!item.href) {
     return <span className={className}>{item.label}</span>;
@@ -52,7 +52,7 @@ function TopNavItem({
 }) {
   const hasPanel = Boolean(item.children?.length);
   const className =
-    "group tm-oopy-nav-font inline-flex h-12 w-full items-center justify-center bg-transparent px-2 text-center text-[17px] font-bold leading-none text-[var(--tm-text)] no-underline transition-colors duration-150 hover:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[rgb(55_53_47/0.18)]";
+    "group tm-oopy-nav-font inline-flex h-12 items-center whitespace-nowrap bg-transparent text-[17px] font-bold leading-none text-[var(--tm-text)] no-underline transition-colors duration-150 hover:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[rgb(55_53_47/0.18)]";
   const labelClassName = cn(
     "relative inline-flex items-center after:pointer-events-none after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[var(--tm-text)] after:transition-transform after:duration-150 after:ease-out group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100",
     active ? "after:scale-x-100" : undefined,
@@ -139,7 +139,7 @@ export function DesktopNav() {
   return (
     <nav
       aria-label="주요 메뉴"
-      className="relative hidden h-full w-[calc(100vw-345px)] flex-none min-[800px]:block"
+      className="relative hidden h-full min-w-0 flex-1 min-[800px]:block"
       onBlur={(event) => {
         if (
           event.relatedTarget instanceof Node &&
@@ -159,7 +159,7 @@ export function DesktopNav() {
       }}
       onMouseLeave={closeMenu}
     >
-      <div className="grid h-full grid-cols-5">
+      <div className="flex h-full gap-x-8 pl-[var(--nav-pad-left)]">
         {navItems.map((item) => (
           <TopNavItem
             active={activeLabel === item.label}
@@ -197,15 +197,25 @@ export function DesktopNav() {
             style={{ transformOrigin: "top" }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="ml-[188px] grid h-full w-[calc(100vw-345px)] grid-cols-5 pt-2">
-              <div
-                className="flex flex-col items-center"
-                style={{ gridColumnStart: activeIndex + 1 }}
-              >
-                {submenuChildren.map((child) => (
-                  <SubmenuAnchor item={child} key={child.label} />
-                ))}
-              </div>
+            <div className="flex h-full gap-x-8 pl-[var(--nav-content-left)] pt-2">
+              {navItems.map((item, index) => (
+                <div
+                  className="flex min-w-0 flex-col items-start"
+                  key={item.label}
+                >
+                  <span
+                    aria-hidden
+                    className="tm-oopy-nav-font pointer-events-none h-0 overflow-hidden whitespace-nowrap text-[17px] font-bold leading-none opacity-0"
+                  >
+                    {item.label}
+                  </span>
+                  {index === activeIndex
+                    ? item.children?.map((child) => (
+                        <SubmenuAnchor item={child} key={child.label} />
+                      ))
+                    : null}
+                </div>
+              ))}
             </div>
           </motion.section>
         ) : null}

@@ -58,6 +58,15 @@
   --content-max-width: 760px;
   --wide-content-max-width: 860px;
   --nav-height: 48px;
+  --logo-width: 188px;
+  /* Left edge x of the centered content column (matches PageFrame article). */
+  --content-left: max(24px, calc((100vw - var(--content-max-width)) / 2));
+  /* Padding that pushes the desktop nav so its first item aligns with the
+     content column, clamped so it never slides under the logo block. */
+  --nav-pad-left: max(0px, calc(var(--content-left) - var(--logo-width)));
+  /* Absolute x (from viewport left) of the first nav item, used by the
+     fixed-position submenu strip to stay aligned with the nav above it. */
+  --nav-content-left: calc(var(--logo-width) + var(--nav-pad-left));
   --tm-surface: #ffffff;
   --tm-header-surface: #ffffff;
   --tm-nav-active-bg: rgb(55 53 47 / 6%);

@@ -2,11 +2,10 @@ import { expect, test } from "@playwright/test";
 
 const routes = [
   "/",
-  "/33adb7f5-8f0a-80b3-b007-ed62e129524f",
-  "/33adb7f5-8f0a-803c-a1f9-f1bda51e20f0",
-  "/2d2db7f5-8f0a-81e9-9167-e4de7443173a",
-  "/2d2db7f5-8f0a-81e9-9167-e4de7443173a/recova",
-  "/2d2db7f5-8f0a-8134-9535-f3e577a4dfdc",
+  "/awards",
+  "/work",
+  "/work/recova",
+  "/how-we-work",
 ] satisfies readonly string[];
 
 test.describe("SLIT company portfolio site", () => {
@@ -59,15 +58,19 @@ test.describe("SLIT company portfolio site", () => {
   test("project portfolio cards open a blog-style case page", async ({
     page,
   }) => {
-    await page.goto("/2d2db7f5-8f0a-81e9-9167-e4de7443173a");
+    await page.goto("/work");
 
     await page.locator('a[href$="/recova"]').first().click();
 
-    await expect(page).toHaveURL(/\/recova$/);
-    await expect(page.getByRole("heading", { name: "Recova" })).toBeVisible();
-    await expect(page.locator("body")).toContainText("핵심 증거");
-    await expect(page.locator("body")).toContainText("문제");
-    await expect(page.locator("body")).toContainText("남은 결과");
+    await expect(page).toHaveURL(/\/work\/recova$/);
+    await expect(
+      page.getByRole("heading", { exact: true, name: "Recova" }),
+    ).toBeVisible();
+    await expect(page.locator("body")).toContainText("프로젝트 목록");
+    await expect(page.locator("body")).toContainText(
+      "계정 하나가 곧 서류 한 뭉치입니다",
+    );
+    await expect(page.locator("body")).toContainText("매입채권추심 도메인");
   });
 
   test("unknown route renders the not-found surface", async ({ page }) => {

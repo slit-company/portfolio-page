@@ -22,7 +22,7 @@ test.describe("SLIT responsive header", () => {
     await page.keyboard.press("Enter");
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByText("적용 분야", { exact: true })).toBeVisible();
+    await expect(drawer.getByText("일하는 방식", { exact: true })).toBeVisible();
     await page.screenshot({ path: `${evidenceDir}/mobile-drawer.png` });
     await drawer.getByRole("link", { name: "문의하기" }).click();
     await expect(drawer).toBeHidden();
@@ -52,7 +52,7 @@ test.describe("SLIT responsive header", () => {
     await page.keyboard.press("Enter");
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByText("적용 분야", { exact: true })).toBeVisible();
+    await expect(drawer.getByText("일하는 방식", { exact: true })).toBeVisible();
   });
 
   test("narrow desktop header keeps nav and submenu unclipped", async ({
@@ -77,13 +77,11 @@ test.describe("SLIT responsive header", () => {
     );
     expect(logoBox.x + logoBox.width).toBeLessThan(companyBox.x);
 
-    await nav.getByText("일하는 방식", { exact: true }).hover();
-    const firstChild = page
-      .getByRole("region", { name: "하위 메뉴" })
-      .getByRole("link", { name: "프로젝트 원칙" });
-    await expect(firstChild).toBeVisible();
+    const workLink = nav.getByText("일하는 방식", { exact: true });
+    await workLink.hover();
+    await expect(workLink).toBeVisible();
 
-    const hasBadOverflow = await firstChild.evaluate(
+    const hasBadOverflow = await workLink.evaluate(
       (element) =>
         element.scrollWidth > element.clientWidth ||
         element.scrollHeight > element.clientHeight + 2,

@@ -1,11 +1,4 @@
-export type RouteKey =
-  | "home"
-  | "about"
-  | "culture"
-  | "interviews"
-  | "life"
-  | "journey"
-  | "careers";
+export type RouteKey = "home" | "interviews" | "life" | "careers" | "awards";
 
 export type NavItem = {
   readonly label: string;
@@ -37,18 +30,17 @@ export type LinkCard = {
   readonly href: string;
 };
 
+export type ProjectCaseBlock =
+  | { readonly kind: "paragraph"; readonly text: string }
+  | { readonly kind: "subheading"; readonly text: string }
+  | { readonly kind: "bullets"; readonly items: readonly string[] };
+
 export type ProjectCaseSection = {
   readonly title: string;
-  readonly body: readonly string[];
+  readonly blocks: readonly ProjectCaseBlock[];
 };
 
 export type ProjectCaseTier = "flagship" | "major" | "expanding";
-
-export type ProjectSummaryBox = {
-  readonly label: string;
-  readonly value: string;
-  readonly description: string;
-};
 
 export type ProjectCase = {
   readonly slug: string;
@@ -56,12 +48,10 @@ export type ProjectCase = {
   readonly tier: ProjectCaseTier;
   readonly description: string;
   readonly tags: readonly string[];
-  readonly proof: string;
   readonly headline: string;
-  readonly summaryBoxes: readonly ProjectSummaryBox[];
-  readonly summary: readonly string[];
+  readonly intro?: readonly string[];
+  readonly resultTiles: readonly string[];
   readonly sections: readonly ProjectCaseSection[];
-  readonly results: readonly string[];
   readonly href?: string;
 };
 

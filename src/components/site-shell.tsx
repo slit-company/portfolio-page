@@ -63,7 +63,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
       <header className="sticky top-0 z-50 flex h-12 w-full items-center border-b border-[rgb(55_53_47/0.09)] bg-white px-0">
         <Link
           aria-label="SLIT Portfolio 홈"
-          className="flex h-12 w-[188px] flex-none items-center pl-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(55_53_47/0.18)]"
+          className="flex h-12 w-[var(--logo-width)] flex-none items-center pl-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(55_53_47/0.18)]"
           href={routePaths.home}
         >
           <SiteLogo />
@@ -100,6 +100,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="rounded-none px-3 py-2.5">
+              {/* TODO: /contact 실제 연결 대상(이메일/폼) 결정 후 교체 */}
               <a href={callChatUrl} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
                 문의하기

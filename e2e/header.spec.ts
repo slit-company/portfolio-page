@@ -56,7 +56,6 @@ test.describe("SLIT header", () => {
       "SLIT 소개",
       "프로젝트 사례",
       "일하는 방식",
-      "적용 분야",
       "문의하기",
     ];
     const centers: number[] = [];
@@ -142,10 +141,7 @@ test.describe("SLIT header", () => {
       name: "프로젝트 원칙",
     });
     await expect(firstChild).toBeVisible();
-    await expect(firstChild).toHaveAttribute(
-      "href",
-      "/33adb7f5-8f0a-803c-a1f9-f1bda51e20f0",
-    );
+    await expect(firstChild).toHaveAttribute("href", "/how-we-work");
     await firstChild.focus();
     await page.keyboard.press("Escape");
     await expect(submenu).toBeHidden();

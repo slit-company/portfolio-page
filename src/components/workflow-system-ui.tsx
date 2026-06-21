@@ -77,11 +77,11 @@ export function HomeWorkflowPreview() {
         <p className="text-[14px] font-bold leading-5 text-[var(--tm-faint)]">
           SLIT AX Workflow
         </p>
-        <h2 className="mt-4 max-w-[780px] break-keep text-[32px] font-bold leading-[1.32] text-[var(--tm-text)] md:text-[40px]">
+        <h2 className="mt-4 max-w-[780px] text-balance break-keep text-[32px] font-bold leading-[1.32] text-[var(--tm-text)] md:text-[40px]">
           업무흐름을 읽고, 사람이 검토할 수 있는 방식으로 옮깁니다.
         </h2>
         <p className="mt-6 max-w-[780px] break-keep text-[18px] leading-9 text-[var(--tm-muted)]">
-          SLIT의 PoC는 담당자가 실제로 판단하는 순서를 듣는 데서 시작합니다. 반복되는 일을 AI Agent가 도울 수 있는 형태로 작게 바꾸고, 중요한 판단은 사람이 검토하고 기록할 수 있게 남깁니다.
+          우리 PoC는 담당자가 실제로 판단하는 순서를 듣는 데서 시작합니다. 반복되는 일을 AI Agent가 도울 수 있는 형태로 작게 바꾸고, 중요한 판단은 사람이 검토하고 기록할 수 있게 남깁니다.
         </p>
       </div>
       <NarrativeSteps steps={homeSteps} />
@@ -96,12 +96,12 @@ export function ProcessSystemMock() {
         <p className="text-[14px] font-bold leading-5 text-[var(--tm-faint)]">
           운영 시스템 전환 방식
         </p>
-        <h2 className="mt-4 max-w-[820px] break-keep text-[32px] font-bold leading-[1.34] text-[var(--tm-text)] md:text-[38px]">
+        <h2 className="mt-4 max-w-[820px] text-balance break-keep text-[32px] font-bold leading-[1.34] text-[var(--tm-text)] md:text-[38px]">
           처음부터 거대한 시스템을 만들기보다, 실제로 남는 업무흐름부터 검증합니다.
         </h2>
         <p className="mt-6 max-w-[820px] break-keep text-[18px] leading-9 text-[var(--tm-muted)]">
           좋은 AX 프로젝트는 화려한 화면보다 판단의 책임이 어디에 남는지 분명해야
-          합니다. SLIT은 자동화 가능한 구간과 사람이 검토해야 하는 구간을 나누고,
+          합니다. 우리는 자동화 가능한 구간과 사람이 검토해야 하는 구간을 나누고,
           PoC에서 나온 기록을 보며 운영 범위를 넓힙니다.
         </p>
       </div>

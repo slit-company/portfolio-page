@@ -8,11 +8,9 @@ const outputDir =
 
 const routes = [
   ["root", routePaths.home],
-  ["about", routePaths.about],
-  ["culture", routePaths.culture],
+  ["awards", routePaths.awards],
   ["interviews", routePaths.interviews],
   ["life", routePaths.life],
-  ["journey", routePaths.journey],
   ["careers", routePaths.careers],
 ] satisfies readonly (readonly [string, string])[];
 

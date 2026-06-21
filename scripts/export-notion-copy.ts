@@ -7,6 +7,7 @@ import type {
   LinkCard,
   PageContent,
   ProjectCase,
+  ProjectCaseSection,
   SectionBlock,
   StatItem,
 } from "@/content/types";
@@ -119,13 +120,31 @@ function writePage(page: PageContent) {
   writeJobs(page.jobs);
 }
 
+function writeProjectSection(section: ProjectCaseSection) {
+  line(`## ${section.title}`);
+  line();
+  for (const block of section.blocks) {
+    if (block.kind === "paragraph") {
+      line(block.text);
+      line();
+    } else if (block.kind === "subheading") {
+      line(`### ${block.text}`);
+      line();
+    } else {
+      for (const item of block.items) {
+        bullet(item);
+      }
+      line();
+    }
+  }
+}
+
 function writeProject(project: ProjectCase) {
   line(`# ${project.title}`);
   line();
   bullet(`slug: ${project.slug}`);
   bullet(`tier: ${project.tier}`);
   bullet(`tags: ${project.tags.join(", ")}`);
-  bullet(`proof: ${project.proof}`);
   if (project.href) {
     bullet(`externalLink: ${project.href}`);
   }
@@ -139,18 +158,21 @@ function writeProject(project: ProjectCase) {
   line();
   line(project.headline);
   line();
-  line("## Summary");
-  line();
-  paragraphs(project.summary);
 
-  for (const section of project.sections) {
-    writeSection(section);
+  if (project.intro?.length) {
+    line("## Intro");
+    line();
+    paragraphs(project.intro);
   }
 
-  line("## 남은 결과");
+  for (const section of project.sections) {
+    writeProjectSection(section);
+  }
+
+  line("## 결과 타일");
   line();
-  for (const result of project.results) {
-    bullet(result);
+  for (const tile of project.resultTiles) {
+    bullet(tile);
   }
   line();
 }

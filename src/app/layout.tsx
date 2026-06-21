@@ -8,8 +8,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SLIT Portfolio",
-  description: "Recova와 SLIT 프로젝트 실적을 정리한 회사 포트폴리오입니다.",
+  title: "SLIT — 조직 안의 가짜 노동을 줄입니다",
+  description:
+    "반복되는 보고·정리·응대를 줄이고, 사람의 판단이 남는 운영 시스템을 만드는 AX 팀. Recova를 비롯한 프로젝트 사례.",
 };
 
 export default function RootLayout({

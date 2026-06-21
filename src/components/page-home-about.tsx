@@ -3,7 +3,6 @@ import {
   LinkCards,
   PageFooter,
   Section,
-  Stats,
   TextLines,
 } from "@/components/page-common";
 import { PageFrame, PageTitle } from "@/components/page-doc-layout";
@@ -16,21 +15,14 @@ export function HomePage({ page }: { readonly page: PageContent }) {
   const introLines = page.intro?.slice(1) ?? [];
 
   return (
-    <PageFrame home page={page}>
-      <Reveal>
-        <h1 className="max-w-[760px] whitespace-pre-line break-keep text-[34px] font-extrabold leading-[1.24] tracking-[-0.01em] text-[rgb(55,53,47)] md:text-[48px] md:leading-[1.18]">
-          {heading}
-        </h1>
-      </Reveal>
+    <PageFrame page={page}>
+      <PageTitle large>{heading}</PageTitle>
       {introLines.length > 0 ? (
         <Reveal className="mt-8 max-w-[760px]">
           <TextLines lines={introLines} />
         </Reveal>
       ) : null}
       <HomeWorkflowPreview />
-      <div className="mt-16">
-        <Stats stats={page.stats} />
-      </div>
       <div className="mt-24 space-y-28">
         {page.sections.map((section, index) => (
           <Section
@@ -46,50 +38,6 @@ export function HomePage({ page }: { readonly page: PageContent }) {
       </div>
       <ContactCta />
       <PageFooter />
-    </PageFrame>
-  );
-}
-
-export function AboutPage({ page }: { readonly page: PageContent }) {
-  const eyebrow = page.intro?.[0];
-  const statement = page.intro?.[1];
-  const firstSection = page.sections.at(0);
-
-  return (
-    <PageFrame page={page}>
-      <PageTitle large>{page.title}</PageTitle>
-      {eyebrow ? (
-        <Reveal className="mt-6">
-          <p className="text-[21px] font-extrabold leading-[1.2] text-[rgba(55,53,47,0.62)]">
-            {eyebrow}
-          </p>
-        </Reveal>
-      ) : null}
-      {statement ? (
-        <Reveal className="mt-8">
-          <h2 className="whitespace-pre-line break-keep text-[32px] font-extrabold leading-[1.3] text-[rgb(55,53,47)]">
-            {statement}
-          </h2>
-        </Reveal>
-      ) : null}
-      {firstSection?.body ? (
-        <Reveal className="mt-9 max-w-[908px]">
-          <TextLines lines={firstSection.body} />
-        </Reveal>
-      ) : null}
-      <div className="mt-11">
-        <Stats stats={page.stats} variant="plain" />
-      </div>
-      <div className="mt-28 space-y-28">
-        {page.sections.slice(1).map((section, index) => (
-          <Section
-            compact
-            index={index}
-            key={`${page.key}-${section.title}`}
-            section={section}
-          />
-        ))}
-      </div>
     </PageFrame>
   );
 }

@@ -2,6 +2,7 @@ import { Jobs } from "@/components/jobs-section";
 import { PageFrame, PageTitle } from "@/components/page-doc-layout";
 import { Reveal } from "@/components/reveal";
 import { ProcessSystemMock } from "@/components/workflow-system-ui";
+import { callChatUrl } from "@/content/routes";
 import type { PageContent } from "@/content/types";
 
 export function LifePage({ page }: { readonly page: PageContent }) {
@@ -69,9 +70,26 @@ function LifeSections({ page }: { readonly page: PageContent }) {
 }
 
 export function CareersPage({ page }: { readonly page: PageContent }) {
+  const headline = page.intro?.[0];
+  const lead = page.intro?.[1];
+
   return (
     <PageFrame page={page}>
       <PageTitle>{page.title}</PageTitle>
+      {headline ? (
+        <Reveal className="mt-[34px]">
+          <h2 className="whitespace-pre-line break-keep text-[32px] font-semibold leading-[1.3] text-[rgb(55,53,47)]">
+            {headline}
+          </h2>
+        </Reveal>
+      ) : null}
+      {lead ? (
+        <Reveal className="mt-9 max-w-[720px]">
+          <p className="whitespace-pre-line break-keep text-[16px] leading-8 text-[rgb(55,53,47)]">
+            {lead}
+          </p>
+        </Reveal>
+      ) : null}
       {page.jobs ? (
         <div className="mt-[72px]">
           <Jobs groups={page.jobs} />
@@ -83,13 +101,31 @@ export function CareersPage({ page }: { readonly page: PageContent }) {
 }
 
 function CareersDetails({ page }: { readonly page: PageContent }) {
+  const overview = page.sections.at(0);
   const process = page.sections.at(1);
   const notice = page.sections.at(2);
 
   return (
     <>
-      {process?.items ? (
+      {overview?.body ? (
         <Reveal className="mt-[132px]">
+          <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[19px] font-bold leading-[1.45]">
+            {overview.title}
+          </h2>
+          <div className="mt-9 space-y-5">
+            {overview.body.map((line) => (
+              <p
+                className="break-keep text-[16px] leading-8 text-[rgb(55,53,47)]"
+                key={line}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+        </Reveal>
+      ) : null}
+      {process?.items ? (
+        <Reveal className="mt-20">
           <h2 className="border-b border-[rgba(55,53,47,0.13)] pb-4 text-[19px] font-bold leading-[1.45]">
             {process.title}
           </h2>
@@ -110,6 +146,14 @@ function CareersDetails({ page }: { readonly page: PageContent }) {
           </ul>
         </Reveal>
       ) : null}
+      <Reveal className="mt-16">
+        <a
+          className="inline-flex h-11 items-center rounded-lg bg-black px-5 text-[15px] font-bold text-white no-underline"
+          href={callChatUrl}
+        >
+          커피챗 신청하기
+        </a>
+      </Reveal>
     </>
   );
 }

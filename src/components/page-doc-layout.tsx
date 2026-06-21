@@ -40,8 +40,10 @@ export function PageTitle({
     <Reveal>
       <h1
         className={cn(
-          "break-keep font-extrabold tracking-[-0.01em] text-[rgb(55,53,47)]",
-          large ? "text-[42px] leading-[1.2]" : "text-[34px] leading-[1.2]",
+          "text-balance break-keep font-extrabold tracking-[-0.01em] text-[rgb(55,53,47)]",
+          large
+            ? "text-[clamp(32px,5.2vw,42px)] leading-[1.2]"
+            : "text-[clamp(28px,4.4vw,34px)] leading-[1.2]",
         )}
       >
         {children}

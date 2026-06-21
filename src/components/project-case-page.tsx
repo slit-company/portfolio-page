@@ -2,7 +2,32 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { routePaths } from "@/content/routes";
-import type { ProjectCase } from "@/content/types";
+import type { ProjectCase, ProjectCaseBlock } from "@/content/types";
+
+function blockKey(block: ProjectCaseBlock): string {
+  if (block.kind === "bullets") {
+    return `bullets:${block.items.join("|")}`;
+  }
+  return `${block.kind}:${block.text}`;
+}
+
+function CaseBlockView({ block }: { readonly block: ProjectCaseBlock }) {
+  if (block.kind === "subheading") {
+    return (
+      <p className="font-extrabold text-[rgb(55,53,47)]">{block.text}</p>
+    );
+  }
+  if (block.kind === "bullets") {
+    return (
+      <ul className="list-disc space-y-2 pl-5">
+        {block.items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+  return <p>{block.text}</p>;
+}
 
 export function ProjectCaseArticle({
   project,
@@ -33,44 +58,34 @@ export function ProjectCaseArticle({
               </span>
             ))}
           </div>
-          <h1 className="mt-5 break-keep text-[42px] font-extrabold leading-[1.18] tracking-[-0.01em] text-[rgb(55,53,47)]">
+          <h1 className="mt-5 text-balance break-keep text-[clamp(32px,5.2vw,42px)] font-extrabold leading-[1.18] tracking-[-0.01em] text-[rgb(55,53,47)]">
             {project.title}
           </h1>
-          <p className="mt-6 break-keep text-[23px] font-extrabold leading-[1.45] text-[rgb(55,53,47)]">
+          <p className="mt-6 text-pretty break-keep text-[clamp(19px,3.2vw,23px)] font-extrabold leading-[1.45] text-[rgb(55,53,47)]">
             {project.headline}
           </p>
           <p className="mt-7 text-[17px] leading-8 text-[rgba(55,53,47,0.82)]">
             {project.description}
           </p>
-        </Reveal>
-
-        <Reveal className="mt-12 border-y border-[rgba(55,53,47,0.12)] py-7">
-          <p className="text-[14px] font-extrabold leading-5 text-[rgba(55,53,47,0.55)]">
-            핵심 증거
-          </p>
-          <p className="mt-3 text-[20px] font-extrabold leading-8 text-[rgb(55,53,47)]">
-            {project.proof}
-          </p>
-          <div className="mt-7 space-y-5">
-            {project.summaryBoxes.map((box) => (
-              <p
-                className="text-[16px] leading-8 text-[rgba(55,53,47,0.82)]"
-                key={box.label}
+          <div className="mt-7 flex flex-wrap gap-2">
+            {project.resultTiles.map((tile) => (
+              <span
+                className="rounded bg-[rgba(55,53,47,0.07)] px-2 py-1 text-[13px] font-extrabold"
+                key={tile}
               >
-                <span className="font-extrabold text-[rgb(55,53,47)]">
-                  {box.label} — {box.value}.
-                </span>{" "}
-                {box.description}
-              </p>
+                {tile}
+              </span>
             ))}
           </div>
         </Reveal>
 
-        <Reveal className="mt-14 space-y-5 text-[18px] leading-9 text-[rgb(55,53,47)]">
-          {project.summary.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </Reveal>
+        {project.intro ? (
+          <Reveal className="mt-14 space-y-5 text-[18px] leading-9 text-[rgb(55,53,47)]">
+            {project.intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </Reveal>
+        ) : null}
 
         <div className="mt-18 space-y-20">
           {project.sections.map((section, index) => (
@@ -79,31 +94,17 @@ export function ProjectCaseArticle({
               delay={index * 0.03}
               key={section.title}
             >
-              <p className="text-[14px] font-extrabold leading-5 text-[rgba(55,53,47,0.48)]">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <h2 className="mt-3 break-keep text-[30px] font-extrabold leading-[1.28] tracking-[-0.01em] text-[rgb(55,53,47)]">
+              <h2 className="text-balance break-keep text-[clamp(24px,4.2vw,30px)] font-extrabold leading-[1.28] tracking-[-0.01em] text-[rgb(55,53,47)]">
                 {section.title}
               </h2>
               <div className="mt-7 space-y-5 text-[17px] leading-9 text-[rgba(55,53,47,0.84)]">
-                {section.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {section.blocks.map((block) => (
+                  <CaseBlockView block={block} key={blockKey(block)} />
                 ))}
               </div>
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-20 border-t border-[rgba(55,53,47,0.12)] pt-9">
-          <h2 className="text-[30px] font-extrabold leading-[1.28] tracking-[-0.01em]">
-            남은 결과
-          </h2>
-          <div className="mt-7 space-y-4 text-[17px] leading-8 text-[rgba(55,53,47,0.84)]">
-            {project.results.map((result) => (
-              <p key={result}>— {result}</p>
-            ))}
-          </div>
-        </Reveal>
 
         {project.href ? (
           <Reveal className="mt-10">

@@ -1,84 +1,39 @@
-import { routePaths } from "@/content/routes";
+import { callChatUrl, routePaths } from "@/content/routes";
 import type { PageContent } from "@/content/types";
-
-export const journeyPage = {
-  key: "journey",
-  path: routePaths.journey,
-  title: "합류여정",
-  breadcrumb: "SLIT Portfolio / 합류여정",
-  intro: [
-    "지원하시기 전에",
-    "이번 과정에서는 SLIT이 가진 성과와 프로젝트를 브랜드, 웹, 자료, 콘텐츠로 함께 정리할 사람을 찾습니다.",
-  ],
-  sections: [
-    {
-      title: "채용 프로세스",
-      columns: [
-        {
-          title: "Step1. 포트폴리오 공유",
-          body: "완성된 결과물과 과정이 함께 보이는 포트폴리오를 먼저 확인합니다.",
-        },
-        {
-          title: "Step2. 커피챗",
-          body: "SLIT의 프로젝트와 지원자의 관심사가 맞는지 편하게 이야기합니다.",
-        },
-        {
-          title: "Step3. 작업 방식 인터뷰",
-          body: "브랜드, 웹, 자료, 콘텐츠를 어떻게 문제에 맞춰 풀어왔는지 확인합니다.",
-        },
-        {
-          title: "Step4. 협업 범위 정리",
-          body: "프로젝트, 파트타임, 계약 등 현실적인 투입 방식과 기대 산출물을 맞춥니다.",
-        },
-        {
-          title: "Step5. 시작",
-          body: "작은 산출물부터 함께 만들며 역할과 협업 리듬을 조정합니다.",
-        },
-      ],
-    },
-    {
-      title: "우리가 궁금한 것",
-      items: [
-        "복잡한 프로젝트를 이해 가능한 자료나 웹 페이지로 바꿔본 경험이 있나요?",
-        "완성 결과와 과정, 판단 근거를 어떻게 포트폴리오에 남기나요?",
-        "초기팀에서 넓은 범위를 맡을 때 어떤 방식으로 우선순위를 정하나요?",
-        "브랜드, 웹, 자료, 콘텐츠 중 지금 가장 강한 영역과 키우고 싶은 영역은 무엇인가요?",
-      ],
-    },
-    {
-      title: "안내사항",
-      body: [
-        "지원/문의는 전달받은 연락처나 프로젝트 미팅에서 이어서 확인합니다.",
-        "프로젝트 또는 파트타임 형태도 열어두고, 투입 시간과 산출물을 먼저 맞춥니다.",
-      ],
-    },
-  ],
-} satisfies PageContent;
 
 export const careersPage = {
   key: "careers",
   path: routePaths.careers,
-  title: "채용 중인 포지션",
-  breadcrumb: "SLIT Portfolio / 채용 중인 포지션",
+  title: "채용",
+  breadcrumb: "SLIT / 채용",
+  intro: [
+    "함께 만들 사람을 찾습니다.",
+    "어려운 일을 고객과 투자자가 한눈에 이해하도록 만드는 자료가 우리에겐 중요합니다. 영업자료, IR 덱, 제안서, 제품 소개 페이지를 같이 만들 사람을 찾습니다.",
+  ],
   sections: [
-    { title: "채용 중인 포지션" },
     {
-      title: "채용절차",
+      title: "무슨 일을 하게 되나요?",
+      body: [
+        "지금은 Recova라는 B2B AI Agent를 만들고 있습니다. 무담보 매입채권추심이라는 좁고 어려운 도메인이라, 우리가 하는 일을 한눈에 보이게 정리하는 일이 그만큼 중요합니다.",
+        "Recova만 하는 것도 아닙니다. 새 아이디어가 나오면 랜딩페이지로 만들고, 고객 미팅 자료로 정리하고, 콘텐츠와 브랜드로 보여 주는 일을 함께하게 됩니다.",
+        "대단한 경력만 찾지는 않습니다. 포트폴리오를 쌓고 싶은 분, 초기 스타트업에서 실제로 쓰이는 자료를 만들어 보고 싶은 분도 좋습니다. 같이 이야기하면서 만들고 고쳐 가면 됩니다.",
+      ],
+    },
+    {
+      title: "채용 절차",
       items: [
         "포트폴리오 공유",
         "커피챗",
         "작업 방식 인터뷰",
         "협업 범위 정리",
-        "프로젝트 시작",
+        "시작",
       ],
     },
     {
-      title: "안내사항",
+      title: "안내",
       body: [
-        "지원/문의는 전달받은 연락처로 확인합니다.",
-        "Recova와 프로젝트 사례를 함께 보고, 본인이 어떤 결과물을 만들 수 있을지 중심으로 이야기합니다.",
-        "계약 형태와 투입 시간은 협업 범위에 맞춰 조정합니다.",
-        "고객사명과 미공개 범위는 실제 공개 가능 여부를 확인한 뒤 자료에 반영합니다.",
+        "풀 온라인으로도 가능합니다. 사무실은 내방역에서 도보 3분입니다.",
+        "먼저 커피챗처럼 가볍게 이야기부터 합니다.",
       ],
     },
   ],
@@ -88,16 +43,8 @@ export const careersPage = {
       role: "Design / Brand / Product Story",
       jobs: [
         {
-          title: "초기팀 디자이너",
-          href: "#application",
-          employment: "프로젝트",
-          experience: "포트폴리오 중심",
-          status: "Open",
-          location: "온/오프라인",
-        },
-        {
-          title: "브랜드·웹·콘텐츠 디자이너",
-          href: "#application",
+          title: "브랜딩·웹·콘텐츠 디자이너",
+          href: callChatUrl,
           employment: "파트타임",
           experience: "경력무관",
           status: "Open",

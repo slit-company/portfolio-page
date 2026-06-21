@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { MotionLift, Reveal } from "@/components/reveal";
 import { getProjectCasePath } from "@/content/project-cases";
@@ -8,19 +9,19 @@ const caseGroups = [
     tier: "flagship",
     title: "대표 사례",
     description:
-      "SLIT이 가장 깊게 검증하고 있는 운영 시스템 사례입니다. 결과물보다 어떤 반복을 발견했고 어떤 판단을 남겼는지 먼저 읽히도록 정리했습니다.",
+      "우리가 가장 깊게 파고드는 도메인입니다. 결과물보다 어디서 반복이 새고, 어떤 판단을 사람이 남겼는지 먼저 읽히도록 정리했습니다.",
   },
   {
     tier: "major",
     title: "주요 사례",
     description:
-      "법률, 운영, 전시처럼 담당자 판단과 사람 검토가 중요한 업무를 다룹니다. 각 사례는 멋진 화면보다 실제 업무에서 줄인 반복을 중심으로 봅니다.",
+      "법률, 운영, 전시처럼 담당자 판단과 사람 검토가 중요한 업무입니다. 멋진 화면보다 실제 업무에서 줄인 반복을 중심으로 봅니다.",
   },
   {
     tier: "expanding",
-    title: "확장 기록",
+    title: "확장·자체 사례",
     description:
-      "PoC, 협업, 초기 제품 실험으로 이어지는 기록입니다. 아직 완결된 성과보다 SLIT이 어떤 문제를 AX 대상으로 읽는지 보여주는 자료입니다.",
+      "진행 중인 PoC, 로컬 비즈니스, 초기 제품, 그리고 우리 채널을 직접 굴려 본 기록입니다. 완결된 성과보다 우리가 어떤 반복을 AX 대상으로 읽는지 보여줍니다.",
   },
 ] satisfies readonly {
   readonly tier: ProjectCaseTier;
@@ -31,7 +32,7 @@ const caseGroups = [
 const caseTierLabels = {
   flagship: "대표 사례",
   major: "주요 사례",
-  expanding: "확장 기록",
+  expanding: "확장·자체 사례",
 } satisfies Record<ProjectCaseTier, string>;
 
 export function InterviewIntroCallout({
@@ -104,13 +105,19 @@ function CaseCard({
   return (
     <MotionLift>
       <Link
-        className="block text-inherit no-underline"
+        className="group block text-inherit no-underline"
         href={getProjectCasePath(project.slug)}
       >
-        <article className="border-t border-[rgba(55,53,47,0.14)] pt-8 text-inherit transition-colors duration-150 hover:border-[rgba(55,53,47,0.35)]">
-          <p className="text-[13px] font-extrabold leading-5 text-[rgba(55,53,47,0.52)]">
-            {caseTierLabels[project.tier]}
-          </p>
+        <article className="rounded-none border border-[rgba(55,53,47,0.14)] bg-white p-6 text-inherit transition-colors duration-150 group-hover:border-[rgba(55,53,47,0.4)] group-hover:bg-[rgba(55,53,47,0.02)] sm:p-8">
+          <div className="flex items-start justify-between gap-4">
+            <p className="text-[13px] font-extrabold leading-5 text-[rgba(55,53,47,0.52)]">
+              {caseTierLabels[project.tier]}
+            </p>
+            <ArrowUpRight
+              aria-hidden
+              className="mt-0.5 size-5 shrink-0 text-[rgba(55,53,47,0.45)] transition-all duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[rgb(55,53,47)]"
+            />
+          </div>
           <h2 className="mt-3 break-keep text-[26px] font-extrabold leading-[1.32] tracking-[-0.01em] text-[rgb(55,53,47)]">
             {project.title}
           </h2>
@@ -119,14 +126,7 @@ function CaseCard({
           </p>
           <div className="mt-4 space-y-4 text-[16px] leading-8 text-[rgba(55,53,47,0.82)]">
             <p>{project.description}</p>
-            <p>{project.summary[0]}</p>
           </div>
-          <p className="mt-5 border-l-2 border-[rgb(154,226,196)] pl-3 break-keep text-[15px] font-extrabold leading-7 text-[rgb(55,53,47)]">
-            {project.proof}
-          </p>
-          <p className="mt-5 text-[14px] font-extrabold text-[rgba(55,53,47,0.7)]">
-            자세히 읽기
-          </p>
         </article>
       </Link>
     </MotionLift>

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const tierLabels = {
   flagship: "대표 사례",
   major: "주요 사례",
-  expanding: "확장 기록",
+  expanding: "확장·자체 사례",
 } satisfies Record<ProjectCaseTier, string>;
 
 export function ProjectCaseVisual({
@@ -15,7 +15,7 @@ export function ProjectCaseVisual({
   readonly project: ProjectCase;
 }) {
   const isHero = mode === "hero";
-  const summaryBoxes = project.summaryBoxes.slice(0, 3);
+  const resultTiles = project.resultTiles.slice(0, 3);
 
   return (
     <div
@@ -43,28 +43,20 @@ export function ProjectCaseVisual({
           "mt-4 border border-[var(--tm-border)]",
         )}
       >
-        {summaryBoxes.map((box) => (
+        {resultTiles.map((tile) => (
           <div
             className="border-b border-[var(--tm-border)] p-4 last:border-b-0"
-            key={box.label}
+            key={tile}
           >
-            <p className="text-[12px] font-bold leading-5 text-[var(--tm-faint)]">
-              {box.label}
+            <p className="break-keep text-[16px] font-bold leading-6 text-[var(--tm-text)]">
+              {tile}
             </p>
-            <p className="mt-2 break-keep text-[16px] font-bold leading-6 text-[var(--tm-text)]">
-              {box.value}
-            </p>
-            {isHero ? (
-              <p className="mt-2 break-keep text-[14px] leading-6 text-[var(--tm-muted)]">
-                {box.description}
-              </p>
-            ) : null}
           </div>
         ))}
       </div>
 
       <p className="mt-4 border-l-2 border-[rgb(154,226,196)] pl-3 break-keep text-[14px] font-bold leading-6 text-[var(--tm-text)]">
-        {project.proof}
+        {project.headline}
       </p>
     </div>
   );

@@ -95,7 +95,7 @@ export function Section({
             {section.eyebrow}
           </p>
         ) : null}
-        <h2 className="whitespace-pre-line break-keep text-[30px] font-extrabold leading-[1.32] tracking-[-0.01em] text-[rgb(55,53,47)]">
+        <h2 className="whitespace-pre-line text-balance break-keep text-[clamp(24px,4.2vw,30px)] font-extrabold leading-[1.32] tracking-[-0.01em] text-[rgb(55,53,47)]">
           {section.title}
         </h2>
         {section.body ? (
@@ -188,7 +188,7 @@ export function ContactCta() {
       id="application"
     >
       <p className="break-keep text-[16px] leading-8">
-        반복 확인과 재정리가 많은 업무를 AI Agent나 운영 시스템으로 옮기고 싶다면, 먼저 현재 업무가 어떤 순서로 돌아가는지부터 이야기해 주세요. SLIT은 자동화 가능한
+        반복 확인과 재정리가 많은 업무를 AI Agent나 운영 시스템으로 옮기고 싶다면, 먼저 현재 업무가 어떤 순서로 돌아가는지부터 이야기해 주세요. 우리는 자동화 가능한
         구간과 사람이 검토해야 할 구간을 함께 정리합니다.
       </p>
       <Button
