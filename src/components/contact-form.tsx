@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { routePaths } from "@/content/routes";
 import { cn } from "@/lib/utils";
 
-// TODO: 실제 SLIT 문의 이메일로 교체
-const CONTACT_EMAIL = "contact@slit.team";
+const CONTACT_EMAIL = "max@slit.company";
 
 const INQUIRY_TYPES = [
   "AX 프로젝트 문의",
