@@ -59,7 +59,7 @@ export function SiteShell({ children, showCta = false }: SiteShellProps) {
 
   return (
     <div className="min-h-screen bg-white text-[rgb(55,53,47)]">
-      <div className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left scale-x-[var(--scroll-progress,0)] bg-[rgb(154,226,196)]" />
+      <div className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left scale-x-[var(--scroll-progress,0)] bg-[rgb(55,53,47)]" />
       <header className="sticky top-0 z-50 flex h-12 w-full items-center border-b border-[rgb(55_53_47/0.09)] bg-white px-0">
         <Link
           aria-label="SLIT Portfolio 홈"
