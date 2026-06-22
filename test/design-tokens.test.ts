@@ -15,7 +15,7 @@ describe("portfolio visual tokens", () => {
     expect(css).toContain("--tm-nav-accent: rgb(102, 157, 253)");
     expect(css).toContain("--tm-amber: rgb(210, 159, 62)");
     expect(css).toContain("rgb(55, 53, 47)");
-    expect(css).toContain("rgb(154 226 196");
+    expect(css).toContain("rgb(154, 226, 196)");
     expect(css).toMatch(/--font-sans:\s*"Pretendard Variable"/);
     expect(css).toContain("pretendardvariable-dynamic-subset.css");
     expect(layout).not.toContain("Gothic_A1");
