@@ -1,5 +1,4 @@
 import {
-  ContactCta,
   LinkCards,
   PageFooter,
   Section,
@@ -36,7 +35,6 @@ export function HomePage({ page }: { readonly page: PageContent }) {
       <div className="mt-28">
         <LinkCards linkCards={page.linkCards} />
       </div>
-      <ContactCta />
       <PageFooter />
     </PageFrame>
   );

@@ -1,9 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { MotionLift, Reveal } from "@/components/reveal";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { callChatUrl, routePaths } from "@/content/routes";
+import { routePaths } from "@/content/routes";
 import type { LinkCard, SectionBlock, StatItem } from "@/content/types";
 import { cn } from "@/lib/utils";
 
@@ -177,26 +176,6 @@ export function LinkCards({
           </a>
         </MotionLift>
       ))}
-    </Reveal>
-  );
-}
-
-export function ContactCta() {
-  return (
-    <Reveal
-      className="mt-24 border-y border-[rgba(55,53,47,0.12)] bg-[rgba(55,53,47,0.04)] py-8"
-      id="application"
-    >
-      <p className="break-keep text-[16px] leading-8">
-        반복 확인과 재정리가 많은 업무를 AI Agent나 운영 시스템으로 옮기고 싶다면, 먼저 현재 업무가 어떤 순서로 돌아가는지부터 이야기해 주세요. 우리는 자동화 가능한
-        구간과 사람이 검토해야 할 구간을 함께 정리합니다.
-      </p>
-      <Button
-        asChild
-        className="mt-5 h-10 rounded-lg bg-black px-4 text-[15px] text-white hover:bg-black/80"
-      >
-        <a href={callChatUrl}>문의하기</a>
-      </Button>
     </Reveal>
   );
 }
